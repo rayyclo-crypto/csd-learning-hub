@@ -289,8 +289,8 @@
       </div>
     </section>
 
-    <!-- 3. 自學龍虎榜 (Leaderboard View) - 支援全校/全級/個別班別 -->
-    <section id="viewLeaderboard" class="hidden space-y-6">
+    <!-- 3. 自學龍虎榜 (Leaderboard View) - 密碼安全保護重設 -->
+    <section id="viewLeaderboard" class="space-y-6 hidden">
       <div class="bg-gradient-to-r from-amber-500 to-yellow-600 rounded-2xl p-6 md:p-8 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">🏆 榮譽殿堂 · 自主學習激勵榜</span>
@@ -315,8 +315,9 @@
               </optgroup>
             </select>
           </div>
-          <button onclick="clearLeaderboard()" class="px-3 py-2 bg-black/20 hover:bg-black/30 text-white text-xs rounded-xl transition">
-            <i class="fa-solid fa-trash-can"></i> 重設
+          <!-- 🔐 密碼保護之重設按鈕 -->
+          <button onclick="protectedClearLeaderboard()" title="需要教師管理員密碼" class="px-3 py-2 bg-black/20 hover:bg-black/30 text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 border border-white/20">
+            <i class="fa-solid fa-lock text-[10px]"></i> 重設榜單
           </button>
         </div>
       </div>
@@ -465,12 +466,12 @@
       ]
     };
 
-    const STORAGE_KEY_QUESTIONS = "HKDSE_CS_QUESTION_BANK_V6";
-    const STORAGE_KEY_LEADERBOARD = "HKDSE_CS_LEADERBOARD_V6";
-    const STORAGE_KEY_STUDENTS = "HKDSE_CS_STUDENTS_DATABASE_V6";
+    const STORAGE_KEY_QUESTIONS = "HKDSE_CS_QUESTION_BANK_V7";
+    const STORAGE_KEY_LEADERBOARD = "HKDSE_CS_LEADERBOARD_V7";
+    const STORAGE_KEY_STUDENTS = "HKDSE_CS_STUDENTS_DATABASE_V7";
     const STORAGE_KEY_CURRENT_CLASS = "HKDSE_CS_ACTIVE_CLASS";
     const STORAGE_KEY_CURRENT_STUDENT = "HKDSE_CS_ACTIVE_STUDENT";
-    const STORAGE_KEY_HISTORY = "HKDSE_CS_HISTORY_LOGS_V6";
+    const STORAGE_KEY_HISTORY = "HKDSE_CS_HISTORY_LOGS_V7";
 
     let QUESTION_BANK = [];
 
@@ -637,6 +638,7 @@
       reader.readAsArrayBuffer(file);
     }
 
+    // 智能生成高質量的答案解析與延伸學習知識庫
     function generateSmartExplanation(theme, topic, qText, answer, options) {
       let explanation = `【核心解題思維】：根據公民科課程重點，正確答案為【${answer}】。答題時須精準辨析題目關鍵字，排除以偏概全或抵觸《基本法》與國家大政方針的干擾選項。`;
       let extension = `【DSE 必背概念】：此題對應《${theme}》之【${topic}】。考評重點在於理解國家發展方針、法治體制或全球化發展趨勢，建議結合時事材料深入溫習。`;
@@ -1327,13 +1329,19 @@
       });
     }
 
-    function clearLeaderboard() {
-      if (confirm("【教師專用】確定要重設學生的龍虎榜積分記錄嗎？")) {
-        localStorage.removeItem(STORAGE_KEY_LEADERBOARD);
-        localStorage.removeItem(STORAGE_KEY_HISTORY);
-        renderLeaderboard();
-        refreshUserBadge();
-        alert("龍虎榜與歷程記錄已成功重設！");
+    // 🔐 密碼保護重設龍虎榜（防學生誤觸）
+    function protectedClearLeaderboard() {
+      const pwd = prompt("🔐 【教師授權】請輸入管理員密碼以確認重設龍虎榜：");
+      if (pwd === ADMIN_PASSWORD) {
+        if (confirm("⚠️ 警告：確定要清空全校學生的龍虎榜與作答歷程嗎？此操作無法撤回！")) {
+          localStorage.removeItem(STORAGE_KEY_LEADERBOARD);
+          localStorage.removeItem(STORAGE_KEY_HISTORY);
+          renderLeaderboard();
+          refreshUserBadge();
+          alert("✅ 龍虎榜與歷程記錄已成功重設！");
+        }
+      } else if (pwd !== null) {
+        alert("❌ 密碼錯誤！您沒有權限重設龍虎榜。");
       }
     }
 
