@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HKDSE 公民科自主學習門戶 · 工具箱</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 圖標庫 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #f8fafc;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+    }
+    .tool-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tool-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 flex flex-col">
+
+  <!-- 頂部導航 -->
+  <header class="hero-gradient text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-8 md:py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <div class="inline-flex items-center gap-2 bg-blue-500/30 border border-blue-400/40 px-3 py-1 rounded-full text-xs font-bold text-amber-300">
+          <i class="fa-solid fa-graduation-cap"></i> HKDSE 公民與社會發展科
+        </div>
+        <h1 class="text-3xl md:text-5xl font-black tracking-tight">公民科自主學習門戶</h1>
+        <p class="text-sm md:text-base text-blue-100 max-w-xl">
+          一站式自學資源樞紐 · 互動刷題 · 概念抽卡 · 歷程診斷 · 全方位備戰文憑試
+        </p>
+      </div>
+
+      <!-- 三大主題徽章快速統計 -->
+      <div class="grid grid-cols-3 gap-3 w-full md:w-auto text-center">
+        <div class="bg-white/10 backdrop-blur border border-white/20 p-3 rounded-2xl">
+          <span class="text-xs text-blue-200 block">主題一</span>
+          <span class="text-sm md:text-base font-bold text-white">「一國兩制」</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur border border-white/20 p-3 rounded-2xl">
+          <span class="text-xs text-blue-200 block">主題二</span>
+          <span class="text-sm md:text-base font-bold text-white">改革開放</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur border border-white/20 p-3 rounded-2xl">
+          <span class="text-xs text-blue-200 block">主題三</span>
+          <span class="text-sm md:text-base font-bold text-white">當代世界</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主要工具箱列表區 -->
+  <main class="flex-grow max-w-6xl w-full mx-auto p-4 md:p-8 space-y-8">
+    
+    <div>
+      <h2 class="text-2xl font-black text-slate-800 flex items-center gap-2.5">
+        <i class="fa-solid fa-toolbox text-blue-600"></i> 自學核心工具箱 (Learning Tools)
+      </h2>
+      <p class="text-sm text-slate-500 mt-1">請點選下方卡片進入各專屬學習工具，系統將為您獨立記錄各項學習成果：</p>
+    </div>
+
+    <!-- 工具卡片網格 (Grid Layout) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- 工具 1: 多項選擇題自學平台 (現已啟用) -->
+      <div class="tool-card bg-white rounded-3xl p-6 border-2 border-blue-500/30 shadow-sm flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-emerald-500 text-white text-[11px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+          ✅ 現已啟用
+        </div>
+        <div class="space-y-4 pt-1">
+          <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            <i class="fa-solid fa-list-check"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-slate-800">多項選擇題自學平台</h3>
+            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+              涵蓋三大主題全套課題，每次隨機抽 5 題練習；附深度答案辨析、DSE 考點延伸庫、個人弱項診斷與全校/全級龍虎榜。
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-lg">隨機抽題</span>
+            <span class="text-[11px] font-bold bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg">弱項診斷</span>
+            <span class="text-[11px] font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-lg">榮譽龍虎榜</span>
+          </div>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-100">
+          <a href="mc-quiz.html" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-xl transition shadow flex items-center justify-center gap-2">
+            <span>進入刷題平台</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 工具 2: DSE 必背概念抽卡速記 (規劃擴充) -->
+      <div class="tool-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-slate-200 text-slate-600 text-[11px] font-bold px-3 py-1 rounded-bl-xl">
+          🚀 籌備擴充中
+        </div>
+        <div class="space-y-4 pt-1">
+          <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-slate-800">DSE 核心概念抽卡速記</h3>
+            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+              收錄憲法、基本法、總體國家安全觀、全方位外交及全球化等核心術語，支援翻卡自測與考前閃卡複習。
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-bold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-lg">概念翻卡</span>
+            <span class="text-[11px] font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">術語精解</span>
+          </div>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-100">
+          <button disabled class="w-full py-3 bg-slate-100 text-slate-400 font-bold rounded-xl cursor-not-allowed flex items-center justify-center gap-2">
+            <i class="fa-solid fa-lock text-xs"></i> 即將推出
+          </button>
+        </div>
+      </div>
+
+      <!-- 工具 3: 資料回應題 (DBQ) 答題思維訓練器 (規劃擴充) -->
+      <div class="tool-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-slate-200 text-slate-600 text-[11px] font-bold px-3 py-1 rounded-bl-xl">
+          🚀 籌備擴充中
+        </div>
+        <div class="space-y-4 pt-1">
+          <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-slate-800">資料回應題思維訓練器</h3>
+            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+              分析圖表、漫畫及時事新聞材料，訓練「引述數據、歸納特徵、扣連概念」的標準 DSE 達標論述結構。
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-lg">圖表分析</span>
+            <span class="text-[11px] font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">答題框架</span>
+          </div>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-100">
+          <button disabled class="w-full py-3 bg-slate-100 text-slate-400 font-bold rounded-xl cursor-not-allowed flex items-center justify-center gap-2">
+            <i class="fa-solid fa-lock text-xs"></i> 即將推出
+          </button>
+        </div>
+      </div>
+
+      <!-- 工具 4: 當代國情與時事專題案例庫 -->
+      <div class="tool-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-slate-200 text-slate-600 text-[11px] font-bold px-3 py-1 rounded-bl-xl">
+          🚀 籌備擴充中
+        </div>
+        <div class="space-y-4 pt-1">
+          <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            <i class="fa-solid fa-newspaper"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-slate-800">當代國情與時事專題庫</h3>
+            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+              精選十四五規劃、粵港澳大灣區發展、一帶一路及國家航天科技等重大成就實例，提供豐富答題佐證。
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-bold bg-rose-50 text-rose-700 px-2.5 py-1 rounded-lg">時事焦點</span>
+            <span class="text-[11px] font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">舉例精選</span>
+          </div>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-100">
+          <button disabled class="w-full py-3 bg-slate-100 text-slate-400 font-bold rounded-xl cursor-not-allowed flex items-center justify-center gap-2">
+            <i class="fa-solid fa-lock text-xs"></i> 即將推出
+          </button>
+        </div>
+      </div>
+
+      <!-- 工具 5: 官方課程指引與評核手冊 -->
+      <div class="tool-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div class="space-y-4 pt-1">
+          <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-slate-800">EDB 官方資源與考評指引</h3>
+            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+              教育局（EDB）與香港考試及評核局（HKEAA）官方公民科課程指引、樣本試卷及評卷參考標準。
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-bold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-lg">官方權威</span>
+            <span class="text-[11px] font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">課程指引</span>
+          </div>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-100">
+          <a href="https://www.edb.gov.hk/tc/curriculum-development/kla/pshe/redeveloped_curriculum_csd/index.html" target="_blank" class="w-full py-3 bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-600 font-bold rounded-xl transition flex items-center justify-center gap-2">
+            <span>瀏覽官方專頁</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- 頁腳 -->
+  <footer class="bg-white border-t py-6 text-center text-xs text-slate-400 mt-auto">
+    <div class="max-w-6xl mx-auto px-4 space-y-1">
+      <p class="font-bold text-slate-600">HKDSE 公民與社會發展科 · 自主學習門戶 (Learning Hub)</p>
+      <p>主題一：「一國兩制」下的香港 ｜ 主題二：改革開放以來的國家 ｜ 主題三：互聯相依的當代世界</p>
+    </div>
+  </footer>
+
+</body>
+</html>
