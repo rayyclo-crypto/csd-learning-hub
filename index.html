@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>燕京書院公民科自主學習門戶 · 工具箱</title>
+  <title>燕京書院 - 公民科自主學習門戶</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome 圖標庫 -->
@@ -38,19 +38,25 @@
     <div class="max-w-6xl mx-auto px-4 py-8 md:py-10 space-y-6">
       
       <!-- 標題與簡介 -->
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="space-y-2 text-center md:text-left">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div class="space-y-3 text-center md:text-left w-full md:w-auto flex-1">
           <div class="inline-flex items-center gap-2 bg-blue-500/30 border border-blue-400/40 px-3 py-1 rounded-full text-xs font-bold text-amber-300">
-            <i class="fa-solid fa-graduation-cap"></i> HKDSE 公民與社會發展科
+            <i class="fa-solid fa-graduation-cap"></i> 燕京書院 · HKDSE 公民與社會發展科
           </div>
-          <h1 class="text-3xl md:text-5xl font-black tracking-tight">燕京書院公民科自主學習門戶</h1>
-          <p class="text-xs md:text-sm text-blue-100 max-w-xl">
+          <h1 class="text-3xl md:text-5xl font-black tracking-tight">公民科自主學習門戶</h1>
+          <p class="text-xs md:text-sm text-blue-100 max-w-xl mx-auto md:mx-0">
             一站式自學資源樞紐 · 隨機刷題 · 概念抽卡 · 歷程診斷 · 全方位備戰文憑試
           </p>
+          
+          <!-- ⚠️ 外部連結免責聲明 -->
+          <div class="mt-3 inline-flex items-start gap-2 bg-rose-500/20 border border-rose-400/40 px-3.5 py-2.5 rounded-xl text-xs text-rose-100 text-left max-w-2xl">
+            <i class="fa-solid fa-triangle-exclamation mt-0.5 text-rose-300"></i>
+            <p><strong>免責聲明：</strong>本門戶提供之外部網頁連結（如 hkcsdcoach.com 及其他非本校伺服器之資源）僅供同學作延伸學習參考。其網站內容、立場及維護均與<strong>燕京書院</strong>無關。</p>
+          </div>
         </div>
 
         <!-- 三大主題徽章 -->
-        <div class="grid grid-cols-3 gap-2.5 w-full md:w-auto text-center shrink-0">
+        <div class="grid grid-cols-3 gap-2.5 w-full md:w-auto text-center shrink-0 mt-4 md:mt-0">
           <div class="bg-white/10 backdrop-blur border border-white/20 p-2.5 rounded-2xl">
             <span class="text-[10px] text-blue-200 block">主題一</span>
             <span class="text-xs md:text-sm font-bold text-white">「一國兩制」</span>
@@ -145,7 +151,61 @@
         </div>
       </div>
 
-      <!-- 工具 2: DSE 必背概念抽卡速記 (規劃擴充) -->
+      <!-- 工具 2: 外部自學資源 (hkcsdcoach.com) -->
+      <div class="tool-card bg-white rounded-3xl p-6 border-2 border-teal-500/30 shadow-sm flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-teal-500 text-white text-[11px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+          🌐 外部連結
+        </div>
+        <div class="space-y-4 pt-1">
+          <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-slate-800">公民科AI溫習神器 (外部連接)</h3>
+            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+              連結至外部自學網站 hkcsdcoach.com，提供額外公民科學習資源及測驗材料。（請留意首頁免責聲明）
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-bold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-lg">外部資源</span>
+            <span class="text-[11px] font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">延伸閱讀</span>
+          </div>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-100">
+          <!-- target="_blank" 確保在新分頁開啟，不會覆蓋學校平台 -->
+          <a href="https://hkcsdcoach.com/" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-teal-50 hover:bg-teal-600 hover:text-white text-teal-700 font-bold rounded-xl transition flex items-center justify-center gap-2">
+            <span>前往外部網站</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 工具 3: EDB 官方課程指引與評核手冊 -->
+      <div class="tool-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div class="space-y-4 pt-1">
+          <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-slate-800">EDB 官方資源與指引</h3>
+            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+              教育局（EDB）與香港考試及評核局（HKEAA）官方公民科課程指引、樣本試卷及評卷參考標準。
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] font-bold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-lg">官方權威</span>
+            <span class="text-[11px] font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">課程指引</span>
+          </div>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-100">
+          <a href="https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A1&1&119" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-600 font-bold rounded-xl transition flex items-center justify-center gap-2">
+            <span>瀏覽官方專頁</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 工具 4: DSE 必背概念抽卡速記 (規劃擴充) -->
       <div class="tool-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between relative overflow-hidden">
         <div class="absolute top-0 right-0 bg-slate-200 text-slate-600 text-[11px] font-bold px-3 py-1 rounded-bl-xl">
           🚀 籌備擴充中
@@ -172,7 +232,7 @@
         </div>
       </div>
 
-      <!-- 工具 3: 資料回應題 (DBQ) 答題思維訓練器 (規劃擴充) -->
+      <!-- 工具 5: 資料回應題 (DBQ) 答題思維訓練器 (規劃擴充) -->
       <div class="tool-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between relative overflow-hidden">
         <div class="absolute top-0 right-0 bg-slate-200 text-slate-600 text-[11px] font-bold px-3 py-1 rounded-bl-xl">
           🚀 籌備擴充中
@@ -199,7 +259,7 @@
         </div>
       </div>
 
-      <!-- 工具 4: 當代國情與時事專題案例庫 -->
+      <!-- 工具 6: 當代國情與時事專題案例庫 -->
       <div class="tool-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between relative overflow-hidden">
         <div class="absolute top-0 right-0 bg-slate-200 text-slate-600 text-[11px] font-bold px-3 py-1 rounded-bl-xl">
           🚀 籌備擴充中
@@ -211,7 +271,7 @@
           <div>
             <h3 class="text-xl font-black text-slate-800">當代國情與時事專題庫</h3>
             <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
-              精選十四五規劃、粵港澳大灣區發展、一帶一路及國家航天科技等重大成就實例，提供豐富答題佐證。
+              精選十四五規劃、大灣區發展、一帶一路及航天科技等重大成就實例，提供豐富答題佐證。
             </p>
           </div>
           <div class="flex flex-wrap gap-1.5">
@@ -226,38 +286,13 @@
         </div>
       </div>
 
-      <!-- 工具 5: 官方課程指引與評核手冊 -->
-      <div class="tool-card bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
-        <div class="space-y-4 pt-1">
-          <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
-            <i class="fa-solid fa-book-bookmark"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-black text-slate-800">官方資源與考評指引</h3>
-            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
-              教育局（EDB）與香港考試及評核局（HKEAA）官方公民科課程指引、樣本試卷及評卷參考標準。
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[11px] font-bold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-lg">官方權威</span>
-            <span class="text-[11px] font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">課程指引</span>
-          </div>
-        </div>
-        <div class="pt-6 mt-4 border-t border-slate-100">
-          <a href="https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A1&1&119" target="_blank" class="w-full py-3 bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-600 font-bold rounded-xl transition flex items-center justify-center gap-2">
-            <span>瀏覽官方專頁</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-          </a>
-        </div>
-      </div>
-
     </div>
   </main>
 
   <!-- 頁腳 -->
   <footer class="bg-white border-t py-6 text-center text-xs text-slate-400 mt-auto">
     <div class="max-w-6xl mx-auto px-4 space-y-1">
-      <p class="font-bold text-slate-600">HKDSE 公民與社會發展科 · 自主學習門戶 (Learning Hub)</p>
+      <p class="font-bold text-slate-600">燕京書院 HKDSE 公民與社會發展科 · 自主學習門戶 (Learning Hub)</p>
       <p>主題一：「一國兩制」下的香港 ｜ 主題二：改革開放以來的國家 ｜ 主題三：互聯相依的當代世界</p>
     </div>
   </footer>
@@ -279,7 +314,7 @@
     function getNextDseExamDate() {
       const now = new Date();
       let targetYear = now.getFullYear();
-      // 公民科考試通常安排在4月中旬（例如4月15日 08:30）
+      // 公民科考試通常安排在4月中旬（設定為 4月15日 08:30 作為參考基準）
       let targetExam = new Date(targetYear, 3, 15, 8, 30, 0);
 
       if (now > targetExam) {
