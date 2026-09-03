@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>燕京書院HKDSE公民科自主學習門戶 · 工具箱</title>
+  <title>燕京書院公民科自主學習門戶 · 工具箱</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome 圖標庫 -->
@@ -24,38 +24,82 @@
       transform: translateY(-6px);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
+    .timer-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
   </style>
 </head>
 <body class="min-h-screen text-slate-800 flex flex-col">
 
-  <!-- 頂部導航 -->
+  <!-- 頂部導航與 DSE 倒數計時專區 -->
   <header class="hero-gradient text-white shadow-lg">
-    <div class="max-w-6xl mx-auto px-4 py-8 md:py-12 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="space-y-2 text-center md:text-left">
-        <div class="inline-flex items-center gap-2 bg-blue-500/30 border border-blue-400/40 px-3 py-1 rounded-full text-xs font-bold text-amber-300">
-          <i class="fa-solid fa-graduation-cap"></i> 燕京書院HKDSE公民與社會發展科
+    <div class="max-w-6xl mx-auto px-4 py-8 md:py-10 space-y-6">
+      
+      <!-- 標題與簡介 -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 bg-blue-500/30 border border-blue-400/40 px-3 py-1 rounded-full text-xs font-bold text-amber-300">
+            <i class="fa-solid fa-graduation-cap"></i> HKDSE 公民與社會發展科
+          </div>
+          <h1 class="text-3xl md:text-5xl font-black tracking-tight">燕京書院公民科自主學習門戶</h1>
+          <p class="text-xs md:text-sm text-blue-100 max-w-xl">
+            一站式自學資源樞紐 · 隨機刷題 · 概念抽卡 · 歷程診斷 · 全方位備戰文憑試
+          </p>
         </div>
-        <h1 class="text-3xl md:text-5xl font-black tracking-tight">燕京書院公民科自主學習門戶</h1>
-        <p class="text-sm md:text-base text-blue-100 max-w-xl">
-          一站式自學資源樞紐 · 互動刷題 · 概念抽卡 · 歷程診斷 · 全方位備戰文憑試
-        </p>
+
+        <!-- 三大主題徽章 -->
+        <div class="grid grid-cols-3 gap-2.5 w-full md:w-auto text-center shrink-0">
+          <div class="bg-white/10 backdrop-blur border border-white/20 p-2.5 rounded-2xl">
+            <span class="text-[10px] text-blue-200 block">主題一</span>
+            <span class="text-xs md:text-sm font-bold text-white">「一國兩制」</span>
+          </div>
+          <div class="bg-white/10 backdrop-blur border border-white/20 p-2.5 rounded-2xl">
+            <span class="text-[10px] text-blue-200 block">主題二</span>
+            <span class="text-xs md:text-sm font-bold text-white">改革開放</span>
+          </div>
+          <div class="bg-white/10 backdrop-blur border border-white/20 p-2.5 rounded-2xl">
+            <span class="text-[10px] text-blue-200 block">主題三</span>
+            <span class="text-xs md:text-sm font-bold text-white">當代世界</span>
+          </div>
+        </div>
       </div>
 
-      <!-- 三大主題徽章快速統計 -->
-      <div class="grid grid-cols-3 gap-3 w-full md:w-auto text-center">
-        <div class="bg-white/10 backdrop-blur border border-white/20 p-3 rounded-2xl">
-          <span class="text-xs text-blue-200 block">主題一</span>
-          <span class="text-sm md:text-base font-bold text-white">「一國兩制」</span>
+      <!-- 🌟 DSE 考試倒數計時器卡片 (Countdown Widget) -->
+      <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-4 md:p-6 shadow-inner flex flex-col lg:flex-row items-center justify-between gap-5">
+        <div class="space-y-1 text-center lg:text-left">
+          <div class="flex items-center justify-center lg:justify-start gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-400 animate-ping"></span>
+            <span class="text-xs font-black uppercase tracking-widest text-amber-300" id="countdownLabel">距離 HKDSE 公民科考試倒數</span>
+          </div>
+          <p class="text-xs text-blue-100 italic" id="motivationalQuote">「持之以恆，每日五題，穩步達標！」</p>
         </div>
-        <div class="bg-white/10 backdrop-blur border border-white/20 p-3 rounded-2xl">
-          <span class="text-xs text-blue-200 block">主題二</span>
-          <span class="text-sm md:text-base font-bold text-white">改革開放</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur border border-white/20 p-3 rounded-2xl">
-          <span class="text-xs text-blue-200 block">主題三</span>
-          <span class="text-sm md:text-base font-bold text-white">當代世界</span>
+
+        <!-- 倒數數字群 (天 / 時 / 分 / 秒) -->
+        <div class="flex items-center gap-2 md:gap-3 text-center font-mono">
+          <div class="timer-box rounded-2xl p-2.5 md:p-3 min-w-[64px] md:min-w-[76px]">
+            <span id="timerDays" class="text-2xl md:text-3xl font-black text-amber-300 block leading-none">00</span>
+            <span class="text-[10px] text-blue-200 font-sans uppercase font-bold mt-1 block">天 (Days)</span>
+          </div>
+          <span class="text-xl md:text-2xl font-bold text-blue-200">:</span>
+          <div class="timer-box rounded-2xl p-2.5 md:p-3 min-w-[64px] md:min-w-[76px]">
+            <span id="timerHours" class="text-2xl md:text-3xl font-black text-white block leading-none">00</span>
+            <span class="text-[10px] text-blue-200 font-sans uppercase font-bold mt-1 block">時 (Hrs)</span>
+          </div>
+          <span class="text-xl md:text-2xl font-bold text-blue-200">:</span>
+          <div class="timer-box rounded-2xl p-2.5 md:p-3 min-w-[64px] md:min-w-[76px]">
+            <span id="timerMinutes" class="text-2xl md:text-3xl font-black text-white block leading-none">00</span>
+            <span class="text-[10px] text-blue-200 font-sans uppercase font-bold mt-1 block">分 (Mins)</span>
+          </div>
+          <span class="text-xl md:text-2xl font-bold text-blue-200">:</span>
+          <div class="timer-box rounded-2xl p-2.5 md:p-3 min-w-[64px] md:min-w-[76px]">
+            <span id="timerSeconds" class="text-2xl md:text-3xl font-black text-emerald-300 block leading-none">00</span>
+            <span class="text-[10px] text-blue-200 font-sans uppercase font-bold mt-1 block">秒 (Secs)</span>
+          </div>
         </div>
       </div>
+
     </div>
   </header>
 
@@ -69,7 +113,7 @@
       <p class="text-sm text-slate-500 mt-1">請點選下方卡片進入各專屬學習工具，系統將為您獨立記錄各項學習成果：</p>
     </div>
 
-    <!-- 工具卡片網格 (Grid Layout) -->
+    <!-- 工具卡片網格 -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- 工具 1: 多項選擇題自學平台 (現已啟用) -->
@@ -189,7 +233,7 @@
             <i class="fa-solid fa-book-bookmark"></i>
           </div>
           <div>
-            <h3 class="text-xl font-black text-slate-800">EDB 官方資源與考評指引</h3>
+            <h3 class="text-xl font-black text-slate-800">官方資源與考評指引</h3>
             <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
               教育局（EDB）與香港考試及評核局（HKEAA）官方公民科課程指引、樣本試卷及評卷參考標準。
             </p>
@@ -200,7 +244,7 @@
           </div>
         </div>
         <div class="pt-6 mt-4 border-t border-slate-100">
-          <a href="https://www.edb.gov.hk/tc/curriculum-development/kla/pshe/redeveloped_curriculum_csd/index.html" target="_blank" class="w-full py-3 bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-600 font-bold rounded-xl transition flex items-center justify-center gap-2">
+          <a href="https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A1&1&119" target="_blank" class="w-full py-3 bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-600 font-bold rounded-xl transition flex items-center justify-center gap-2">
             <span>瀏覽官方專頁</span>
             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
           </a>
@@ -218,5 +262,71 @@
     </div>
   </footer>
 
+  <!-- ========================================== -->
+  <!-- 倒數計時與金句 JavaScript 邏輯 -->
+  <!-- ========================================== -->
+  <script>
+    // 勉勵金句庫
+    const MOTIVATIONAL_QUOTES = [
+      "「持之以恆，每日 5 題，穩步達標（Attained）！」",
+      "「概念清晰、審題精準，文憑試迎刃而解！」",
+      "「知己知彼，查漏補缺，弱項就是進步空間！」",
+      "「掌握憲制基礎與當代國情，自信邁向大學之路！」",
+      "「堅持自主學習，今日累積的積分，是明日成功的基石！」"
+    ];
+
+    // 動態計算目標考試日（若今年4月已過，自動指向下屆4月中旬）
+    function getNextDseExamDate() {
+      const now = new Date();
+      let targetYear = now.getFullYear();
+      // 公民科考試通常安排在4月中旬（例如4月15日 08:30）
+      let targetExam = new Date(targetYear, 3, 15, 8, 30, 0);
+
+      if (now > targetExam) {
+        targetYear += 1;
+        targetExam = new Date(targetYear, 3, 15, 8, 30, 0);
+      }
+      return { targetDate: targetExam, year: targetYear };
+    }
+
+    function initCountdown() {
+      const { targetDate, year } = getNextDseExamDate();
+      document.getElementById('countdownLabel').textContent = `距離 ${year} HKDSE 公民科考試倒數`;
+
+      // 隨機選取一條勉勵金句
+      const randomQuote = MOTIVATIONAL_QUOTES[Math.floor(Math.random() * MOTIVATIONAL_QUOTES.length)];
+      document.getElementById('motivationalQuote').textContent = randomQuote;
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const distance = targetDate.getTime() - now;
+
+        if (distance < 0) {
+          document.getElementById('timerDays').textContent = "00";
+          document.getElementById('timerHours').textContent = "00";
+          document.getElementById('timerMinutes').textContent = "00";
+          document.getElementById('timerSeconds').textContent = "00";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('timerDays').textContent = String(days).padStart(2, '0');
+        document.getElementById('timerHours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('timerMinutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('timerSeconds').textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initCountdown();
+    });
+  </script>
 </body>
 </html>

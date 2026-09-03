@@ -297,11 +297,11 @@
           <h2 class="text-3xl font-black mt-2">公民科自學龍虎榜</h2>
           <p class="text-amber-100 text-sm mt-1">持之以恆、查漏補缺！方便老師按全校、全級或班別發放獎勵！</p>
         </div>
-        <div class="flex items-center gap-3">
-          <!-- 三維榜單過濾下拉：全校 / 全級 / 班別 -->
-          <div class="bg-white/20 backdrop-blur rounded-xl p-1.5 flex items-center gap-2 border border-white/30">
-            <span class="text-xs font-bold pl-2">榜單維度：</span>
-            <select id="leaderboardClassFilter" onchange="renderLeaderboard()" class="bg-white text-slate-800 text-xs font-black rounded-lg px-3 py-1.5 focus:outline-none">
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+          <!-- 三維榜單過濾下拉 -->
+          <div class="bg-white/20 backdrop-blur rounded-xl p-1.5 flex items-center gap-2 border border-white/30 w-full sm:w-auto">
+            <span class="text-xs font-bold pl-2 whitespace-nowrap">榜單維度：</span>
+            <select id="leaderboardClassFilter" onchange="renderLeaderboard()" class="bg-white text-slate-800 text-xs font-black rounded-lg px-3 py-1.5 focus:outline-none w-full sm:w-auto">
               <option value="ALL">🌟 【全校總榜】</option>
               <optgroup label="── 按全級劃分 ──">
                 <option value="GRADE_4">🎖️ 中四級 (S4 全級榜)</option>
@@ -316,7 +316,7 @@
             </select>
           </div>
           <!-- 🔐 密碼保護之重設按鈕 -->
-          <button onclick="protectedClearLeaderboard()" title="需要教師管理員密碼" class="px-3 py-2 bg-black/20 hover:bg-black/30 text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 border border-white/20">
+          <button onclick="protectedClearLeaderboard()" title="需要教師管理員密碼" class="px-4 py-2 bg-black/30 hover:bg-black/50 text-white text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5 border border-white/20 w-full sm:w-auto whitespace-nowrap">
             <i class="fa-solid fa-lock text-[10px]"></i> 重設榜單
           </button>
         </div>
@@ -466,12 +466,12 @@
       ]
     };
 
-    const STORAGE_KEY_QUESTIONS = "HKDSE_CS_QUESTION_BANK_V7";
-    const STORAGE_KEY_LEADERBOARD = "HKDSE_CS_LEADERBOARD_V7";
-    const STORAGE_KEY_STUDENTS = "HKDSE_CS_STUDENTS_DATABASE_V7";
+    const STORAGE_KEY_QUESTIONS = "HKDSE_CS_QUESTION_BANK_V8"; // Version bump just in case
+    const STORAGE_KEY_LEADERBOARD = "HKDSE_CS_LEADERBOARD_V8";
+    const STORAGE_KEY_STUDENTS = "HKDSE_CS_STUDENTS_DATABASE_V8";
     const STORAGE_KEY_CURRENT_CLASS = "HKDSE_CS_ACTIVE_CLASS";
     const STORAGE_KEY_CURRENT_STUDENT = "HKDSE_CS_ACTIVE_STUDENT";
-    const STORAGE_KEY_HISTORY = "HKDSE_CS_HISTORY_LOGS_V7";
+    const STORAGE_KEY_HISTORY = "HKDSE_CS_HISTORY_LOGS_V8";
 
     let QUESTION_BANK = [];
 
