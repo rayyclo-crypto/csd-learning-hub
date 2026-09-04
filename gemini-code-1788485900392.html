@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公民與社會發展科 - 資訊素養測驗題解可視化系統</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dseblue: '#1e40af',
+                        dsegreen: '#15803d',
+                        dseblack: '#1f2937',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        /* Three-color pen styling simulation */
+        .pen-mode-active .ans-topic { color: #2563eb !important; font-weight: 600; border-bottom: 2px dashed #93c5fd; }
+        .pen-mode-active .ans-source { color: #1f2937 !important; font-weight: 500; background-color: #f3f4f6; padding: 0 2px; }
+        .pen-mode-active .ans-explain { color: #16a34a !important; font-style: italic; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <header class="bg-gradient-to-r shadow-lg text-white border-b-4 border-blue-800" style="background-image: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);">
+        <div class="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-yellow-400 text-blue-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">校本評核測驗分析</span>
+                <h1 class="text-2xl font-bold mt-1 tracking-tight">中華基督教會燕京書院 — 公民與社會發展科</h1>
+                <p class="text-blue-100 text-sm mt-0.5">中五級上學期測驗四（資訊素養與國家安全）題解工作坊</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-lg p-3 text-right text-xs border border-white/20">
+                <div><strong>測驗日期：</strong>2026年5月21日</div>
+                <div><strong>測驗時限：</strong>40 分鐘 | <strong>總分：</strong>13 分</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
+        
+        <aside class="lg:col-span-4 space-y-6">
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl shadow-sm">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 text-amber-500 mt-0.5">
+                        <i class="fa-solid fa-pen-nib text-lg"></i>
+                    </div>
+                    <div class="ml-3">
+                        <h4 class="text-sm font-bold text-amber-900 uppercase tracking-wide">重要作答規範 (三色筆答題三步曲)</h4>
+                        <p class="text-xs text-amber-700 mt-1 leading-relaxed">
+                            本卷強制要求使用三色筆配合作答，否則全卷扣 1 分：<br>
+                            <span class="inline-block mt-1 px-1.5 py-0.5 bg-blue-100 text-blue-700 font-bold rounded">● 藍色：主題句</span>
+                            <span class="inline-block mt-1 px-1.5 py-0.5 bg-gray-200 text-gray-800 font-bold rounded">● 黑色：資料引用</span>
+                            <span class="inline-block mt-1 px-1.5 py-0.5 bg-green-100 text-green-700 font-bold rounded">● 綠色：概念解說</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden sticky top-6">
+                <div class="bg-gray-800 text-white px-4 py-3 flex justify-between items-center">
+                    <span class="font-bold text-sm tracking-wide"><i class="fa-solid fa-book-open mr-2 text-blue-400"></i>考卷資料冊 (材料庫)</span>
+                    <span class="text-xs bg-gray-700 px-2 py-0.5 rounded text-gray-300">共 3 則資料</span>
+                </div>
+                
+                <div class="p-4 space-y-4 max-h-[calc(100vh-280px)] overflow-y-auto">
+                    <div class="border border-gray-200 rounded-lg p-3 hover:border-blue-300 transition-all bg-slate-50">
+                        <div class="flex justify-between items-center mb-1.5 border-b border-gray-200 pb-1">
+                            <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">資料 A</span>
+                            <span class="text-[11px] text-gray-400">總體國家安全觀</span>
+                        </div>
+                        <p class="text-xs text-gray-700 leading-relaxed">
+                            總體國家安全觀將國家安全的涵蓋面擴闊至不同重點領域。人工智能安全就是其中一個重點領域。人工智能的應用包括臉容識別、聊天機器人等，具潛力促進生產力，但亦存在<strong>私隱數據洩露</strong>等潛在風險。維護其安全必須確保其<strong>可靠、可控</strong>。
+                        </p>
+                    </div>
+
+                    <div class="border border-gray-200 rounded-lg p-3 hover:border-blue-300 transition-all bg-slate-50">
+                        <div class="flex justify-between items-center mb-1.5 border-b border-gray-200 pb-1">
+                            <span class="text-xs font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">資料 B</span>
+                            <span class="text-[11px] text-gray-400">智能聊天機器人學術應用</span>
+                        </div>
+                        <p class="text-xs text-gray-700 leading-relaxed mb-1">智能聊天機器人（如 ChatGPT）在學術界的應用成為全球關注點：</p>
+                        <ul class="text-xs text-gray-600 list-disc list-inside space-y-1 bg-white p-2 rounded border border-gray-100">
+                            <li>必須關注帶來的正面和負面影響。</li>
+                            <li>難處在於怎樣<strong>篩選其所提供的大量資訊</strong>。</li>
+                            <li>學生需要培養善用AI的能力，例如<strong>辨別回覆資訊的真偽</strong>。</li>
+                        </ul>
+                    </div>
+
+                    <div class="border border-gray-200 rounded-lg p-3 hover:border-blue-300 transition-all bg-slate-50">
+                        <div class="flex justify-between items-center mb-1.5 border-b border-gray-200 pb-1">
+                            <span class="text-xs font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">資料 C</span>
+                            <span class="text-[11px] text-gray-400">資訊素養與科技挑戰</span>
+                        </div>
+                        <p class="text-xs text-gray-700 leading-relaxed">
+                            科技日新月異，帶來前所未有的轉變和挑戰。如今<strong>資訊泛濫</strong>，必須學會辨別資訊真偽；網絡公審、<strong>「起底」情況頻繁</strong>，需要辨別在網絡發表言論的合適時機和情況。使用者必須具備良好的資訊素養，才能夠<strong>合乎道德及有效地運用資訊</strong>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="lg:col-span-8 flex flex-col space-y-4">
+            
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm font-medium text-gray-500">當前題號導航：</span>
+                    <div class="inline-flex rounded-lg shadow-sm" role="group">
+                        <button onclick="switchTab('1a')" id="btn-1a" class="tab-btn px-4 py-2 text-xs font-bold rounded-l-lg bg-blue-600 text-white border border-blue-600 transition-all">1(a) 選擇題</button>
+                        <button onclick="switchTab('1b')" id="btn-1b" class="tab-btn px-4 py-2 text-xs font-bold bg-white text-gray-700 border-t border-b border-gray-200 hover:bg-gray-50 transition-all">1(b) 國安領域</button>
+                        <button onclick="switchTab('1c')" id="btn-1c" class="tab-btn px-4 py-2 text-xs font-bold bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 transition-all">1(c) AI教育影響</button>
+                        <button onclick="switchTab('1d')" id="btn-1d" class="tab-btn px-4 py-2 text-xs font-bold rounded-r-lg bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 transition-all">1(d) 申述題</button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="penModeToggle" checked onchange="togglePenMode()" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:auto after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-blue-600 peer-checked:to-green-600"></div>
+                        <span class="ms-3 text-xs font-bold text-gray-700"><i class="fa-solid fa-wand-magic-sparkles text-indigo-500 mr-1"></i> 三色筆動態高亮</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="pen-mode-active" id="workspaceContainer">
+                
+                <div id="content-1a" class="question-panel bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6">
+                    <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                        <div>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-md">題號 1(a)</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1">資訊科技發展的特徵辨析</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">[ 滿分：1分 ]</span>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm">
+                        <p class="font-medium text-gray-800 mb-3">題目：以下哪些是資訊科技發展的特徵？</p>
+                        <div class="grid grid-cols-3 gap-3 mb-4">
+                            <div class="bg-white p-2.5 rounded border border-gray-200 flex items-center shadow-sm"><span class="w-5 h-5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center mr-2">1</span> 數據化</div>
+                            <div class="bg-white p-2.5 rounded border border-gray-200 flex items-center shadow-sm"><span class="w-5 h-5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center mr-2">2</span> 訊息化</div>
+                            <div class="bg-white p-2.5 rounded border border-gray-200 flex items-center shadow-sm"><span class="w-5 h-5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center mr-2">3</span> 智能化</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">答題卡模擬選擇</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                            <button onclick="checkMC('A')" class="mc-btn border-2 border-gray-200 p-3 rounded-xl text-left flex items-center justify-between hover:bg-gray-50 transition-all text-sm font-medium">
+                                <span>A. 只有 (1) 及 (2)</span>
+                                <i class="fa-regular fa-circle text-gray-300"></i>
+                            </button>
+                            <button onclick="checkMC('B')" class="mc-btn border-2 border-gray-200 p-3 rounded-xl text-left flex items-center justify-between hover:bg-gray-50 transition-all text-sm font-medium">
+                                <span>B. 只有 (1) 及 (3)</span>
+                                <i class="fa-regular fa-circle text-gray-300"></i>
+                            </button>
+                            <button onclick="checkMC('C')" class="mc-btn border-2 border-gray-200 p-3 rounded-xl text-left flex items-center justify-between hover:bg-gray-50 transition-all text-sm font-medium">
+                                <span>C. 只有 (2) 及 (3)</span>
+                                <i class="fa-regular fa-circle text-gray-300"></i>
+                            </button>
+                            <button onclick="checkMC('D')" id="mc-correct-btn" class="mc-btn border-2 border-green-500 bg-green-50/50 p-3 rounded-xl text-left flex items-center justify-between transition-all text-sm font-bold text-green-800">
+                                <span>D. (1)、(2) 及 (3)</span>
+                                <i class="fa-solid fa-circle-check text-green-600"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+                        <h4 class="text-sm font-bold text-emerald-900 flex items-center"><i class="fa-solid fa-lightbulb mr-2 text-amber-500"></i> 考評局官方解讀與核心概念</h4>
+                        <p class="text-xs text-emerald-800 mt-1.5 leading-relaxed">
+                            <strong>正確答案為 D。</strong> 資訊科技（IT）在21世紀發展極其迅速，其三大支柱與社會轉型核心特徵正是<strong>數據化</strong>（底層資產）、<strong>訊息化</strong>（網絡傳播與架構）以及現階段最具顛覆性的<strong>智能化</strong>（如人工智能、大語言模型、自適應計算）。三者相輔相成，共同構成了當代資訊素養考察的背景基礎。
+                        </p>
+                    </div>
+                </div>
+
+                <div id="content-1b" class="question-panel hidden bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6">
+                    <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                        <div>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-md">題號 1(b)</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1">總體國家安全觀重點領域識別</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">[ 滿分：2分 ]</span>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm">
+                        <p class="font-medium text-gray-800">題目：國家安全涵蓋不同重點領域。除「人工智能安全」外，指出另外兩個重點領域。</p>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">點擊查看符合考卷規範的推薦標準答案（任選兩個即可得滿分）：</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                            <div class="p-2.5 bg-blue-50 border border-blue-200 text-blue-800 text-center rounded-lg text-xs font-bold shadow-sm"><i class="fa-solid fa-shield-halved mr-1.5"></i> 網絡安全</div>
+                            <div class="p-2.5 bg-blue-50 border border-blue-200 text-blue-800 text-center rounded-lg text-xs font-bold shadow-sm"><i class="fa-solid fa-database mr-1.5"></i> 數據安全</div>
+                            <div class="p-2.5 bg-blue-50 border border-blue-200 text-blue-800 text-center rounded-lg text-xs font-bold shadow-sm"><i class="fa-solid fa-microchip mr-1.5"></i> 科技安全</div>
+                            <div class="p-2.5 bg-blue-50 border border-blue-200 text-blue-800 text-center rounded-lg text-xs font-bold shadow-sm"><i class="fa-solid fa-dollar-sign mr-1.5"></i> 經濟安全</div>
+                            <div class="p-2.5 bg-gray-50 border border-gray-200 text-gray-600 text-center rounded-lg text-xs font-medium"><i class="fa-solid fa-gavel mr-1.5"></i> 政治安全</div>
+                            <div class="p-2.5 bg-gray-50 border border-gray-200 text-gray-600 text-center rounded-lg text-xs font-medium"><i class="fa-solid fa-dna mr-1.5"></i> 生物安全</div>
+                            <div class="p-2.5 bg-gray-50 border border-gray-200 text-gray-600 text-center rounded-lg text-xs font-medium"><i class="fa-solid fa-seedling mr-1.5"></i> 生態安全</div>
+                            <div class="p-2.5 bg-gray-50 border border-gray-200 text-gray-600 text-center rounded-lg text-xs font-medium"><i class="fa-solid fa-wheat-awn mr-1.5"></i> 糧食安全</div>
+                        </div>
+                    </div>
+
+                    <div class="border-l-4 border-blue-600 bg-blue-50/50 p-4 rounded-r-lg text-xs space-y-1 text-blue-900">
+                        <div class="font-bold text-sm text-blue-950 mb-1">評卷參考標準：</div>
+                        <p>● 每寫出一個符合「總體國家安全觀」框架的非重複重點領域得 1 分，最高 2 分。</p>
+                        <p class="text-red-600 font-medium">⚠️ 注意：不可再寫「人工智能安全」！建議書寫與科技、資訊最為緊密相連的「網絡安全」或「數據安全」，這最貼合本卷的主題邏輯。</p>
+                    </div>
+                </div>
+
+                <div id="content-1c" class="question-panel hidden bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6">
+                    <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                        <div>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-md">題號 1(c)</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1">智能聊天機器人在教育上的雙刃劍效應</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">[ 滿分：4分 ]</span>
+                    </div>
+
+                    <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-200 text-xs leading-relaxed">
+                        <p class="font-bold text-gray-800 mb-1">題目：</p>
+                        <p class="text-gray-700">參考<span class="bg-teal-100 px-1 font-bold">資料 B</span>，討論在教育上應用智能聊天機器人程式的一個正面影響及一個負面影響。</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-sm font-bold text-gray-900 flex items-center"><i class="fa-solid fa-square-poll-horizontal text-blue-600 mr-2"></i>校方高分範文展示</h4>
+                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded font-medium">已強制匹配三色筆規則</span>
+                        </div>
+
+                        <div class="space-y-4 text-sm leading-relaxed p-4 border border-dashed border-gray-200 bg-slate-50/50 rounded-xl">
+                            <div class="p-3 bg-white rounded-lg shadow-sm border border-gray-100">
+                                <h5 class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide"><i class="fa-solid fa-plus-circle text-green-500 mr-1"></i> 正面影響分析 (2分)</h5>
+                                <p>
+                                    <span class="ans-topic">在正面影響方面，應用智能聊天機器人有助提升學生的科技善用能力與高階思維。</span>
+                                    <span class="ans-source">根據資料 B 指出，學生在面對這類新科技時，需要培養善用人工智能科技的能力。</span>
+                                    <span class="ans-explain">這意味著智能聊天機器人能夠成為強大的自主學習輔助工具。在教師的引導下，學生通過與機器人互動，學會如何精準地設計提問指令，進而在龐大的數據庫中高效率地檢索知識。這種長期的實踐過程，不僅能深化學生對特定學科知識的理解，更能主動促進其資訊科技素養與科技實踐能力的發展。</span>
+                                </p>
+                            </div>
+
+                            <div class="p-3 bg-white rounded-lg shadow-sm border border-gray-100">
+                                <h5 class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide"><i class="fa-solid fa-minus-circle text-red-500 mr-1"></i> 負面影響分析 (2分)</h5>
+                                <p>
+                                    <span class="ans-topic">在負面影響方面，這可能削弱學生獨立思考的能力，並帶來資訊真偽誤導的風險。</span>
+                                    <span class="ans-source">根據資料 B 提及，使用該程式的難處在於如何篩選大量資訊，學生必須具備辨別回覆資訊真偽的能力。</span>
+                                    <span class="ans-explain">由於智能聊天機器人的生成內容偶有「幻覺」或錯誤數據，若學生缺乏足夠的批判性思維而盲目直接抄襲、採納其回覆，會導致學術不端或認知偏差。此外，過度依賴「餵養式」的即時答案，會降低學生翻閱傳統文獻與深入探究的意願，長期而言對其獨立思考及篩選優質資訊的判斷力帶來顯著的負面衝擊。</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50/70 rounded-xl p-4 border border-amber-200 text-xs text-amber-900">
+                        <div class="font-bold text-sm text-amber-950 mb-1">💡 考評採分點拆解：</div>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>正面影響 (2分)：</strong> 正確歸納資料中關於「培養善用AI能力」的線索 + 結合教育現場的推導解說。</li>
+                            <li><strong>負面影響 (2分)：</strong> 正確指出「篩選資訊與辨別真偽之難」 + 深度延伸至獨立思考弱化及錯誤資訊風險。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="content-1d" class="question-panel hidden bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6">
+                    <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                        <div>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-md">題號 1(d)</span>
+                            <h3 class="text-lg font-bold text-gray-900 mt-1">「現代人應具備資訊素養」之觀點申述題</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">[ 滿分：6分 ]</span>
+                    </div>
+
+                    <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-200 text-xs leading-relaxed">
+                        <p class="font-bold text-gray-800 mb-1">題目：</p>
+                        <p class="text-gray-700">「生活在現今社會，人們應具備資訊素養。」參考所提供的資料及就你所知，解釋這個看法。</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-sm font-bold text-gray-900 flex items-center"><i class="fa-solid fa-medal text-yellow-500 mr-2"></i> 6分頂級滿分答卷示範 (三步曲架構)</h4>
+                        </div>
+
+                        <div class="space-y-4 text-sm leading-relaxed p-4 border border-dashed border-gray-200 bg-slate-50/50 rounded-xl">
+                            <div class="p-3 bg-white rounded-lg shadow-sm border border-gray-100">
+                                <h5 class="text-xs font-bold text-blue-600 mb-1.5">分論點一：應對資訊泛濫挑戰，確保獲取正確資訊</h5>
+                                <p>
+                                    <span class="ans-topic">首先，具備資訊素養能讓人們在資訊泛濫的科技時代中，具備明辨是非與去偽存真的基本能力。</span>
+                                    <span class="ans-source">根據資料 C 和資料 B 顯示，現今科技急速發展導致資訊泛濫，而智能聊天機器人等新工具提供的海量資訊中更是真假難辨，篩選和辨別其真偽成為巨大難處。</span>
+                                    <span class="ans-explain">在個人層面，若缺乏資訊素養，現代人極易被網上鋪天蓋地的「假新聞」、謠言或經由 AI 惡意篡改的虛假數據所蒙蔽，做出錯誤的醫療、理財或生活決策。只有具備良好的資訊素養，人們才能學會多方查證、審視來源可靠性，從而在數字洪流中理性、有效地運用正確資訊，免受誤導。</span>
+                                </p>
+                            </div>
+
+                            <div class="p-3 bg-white rounded-lg shadow-sm border border-gray-100">
+                                <h5 class="text-xs font-bold text-blue-600 mb-1.5">分論點二：規範網絡道德行為，維護和諧清朗的社會秩序</h5>
+                                <p>
+                                    <span class="ans-topic">其次，資訊素養能約束現代人的網絡道德行為，防範因濫用科技而導致的違法及道德失範問題。</span>
+                                    <span class="ans-source">資料 C 提及，現今網絡公審和「起底」情況極端頻繁，使用者必須具備良好的資訊素養才能合乎道德地運用科技，並辨別發表言聯的合適時機。</span>
+                                    <span class="ans-explain">這表明資訊素養不只是單純的技術操作，更關乎數字公民的道德底線。具備資訊素養的人會自覺尊重他人隱私，拒絕參與網絡欺凌、惡意人肉搜索或傳播未經證實的誹謗言論。這對於構建一個健康、理性且合乎法治秩序的現代網絡社會至關重要。</span>
+                                </p>
+                            </div>
+
+                            <div class="p-3 bg-white rounded-lg shadow-sm border border-gray-100">
+                                <h5 class="text-xs font-bold text-blue-600 mb-1.5">分論點三：維護總體國家安全，防範新型科技安全風險 (個人就本土/國家所知延伸)</h5>
+                                <p>
+                                    <span class="ans-topic">再者，提升資訊素養已上升至維護國家安全及個人私隱安全的核心層面。</span>
+                                    <span class="ans-source">資料 A 指出，人工智能與網絡應用等新時代挑戰正廣泛威脅著國家利益，其伴隨的私隱數據洩露風險不容忽視，維護其安全必須確保可靠可控。</span>
+                                    <span class="ans-explain">就我所知，現代社會中境外敵對勢力常利用社交媒體散播煽動性政治假信息，或通過釣魚網站竊取公民大數據以危害國家安全。公民若具備高等級的資訊素養，就能增強國家安全防範意識，自覺保護個人與國家的關鍵數據不被洩露，從而有效抵禦危害網絡安全與大數據安全的新型威脅。</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+                        <h4 class="text-xs font-bold text-gray-700 mb-2 uppercase tracking-wide flex items-center"><i class="fa-solid fa-list-check mr-1.5 text-blue-600"></i> DSE 公民科官方 5-6 分最高層級評卷標準</h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full text-left text-[11px] text-gray-600 border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-100 text-gray-800 border-b border-gray-200 font-bold">
+                                        <th class="p-2">維度</th>
+                                        <th class="p-2">5-6 分（最高表現）</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    <tr>
+                                        <td class="p-2 font-semibold text-gray-900 bg-gray-50/50">資料運用</td>
+                                        <td class="p-2">能極為充分、全面且靈活地順暢引用資料 A、B、C 中的所有關鍵核心線索。</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 font-semibold text-gray-900 bg-gray-50/50">個人知識</td>
+                                        <td class="p-2">展現豐富精確的個人知識（如國家安全意識、假新聞對社會的破壞、個人決策誤導）。</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 font-semibold text-gray-900 bg-gray-50/50">結構邏輯</td>
+                                        <td class="p-2">清晰地以「三色筆三步曲」展開：概念/主題清晰、多角度論述（個人/社會/國家安全），推導邏輯極強。</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-400 py-4 border-t border-gray-800 text-center text-xs mt-auto">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 燕京書院公民與社會發展科測驗分析系統 | 嚴格遵循考評局評卷指引</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching controller
+        function switchTab(tabId) {
+            // Hide all panels
+            const panels = document.querySelectorAll('.question-panel');
+            panels.forEach(p => p.classList.add('hidden'));
+            
+            // Show current target panel
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            
+            // Reset active style on all navigation buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(b => {
+                b.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                b.classList.add('bg-white', 'text-gray-700', 'border-gray-200');
+            });
+            
+            // Highlight chosen button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('bg-white', 'text-gray-700', 'border-gray-200');
+            activeBtn.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+        }
+
+        // Toggle Three-Color Pen Colorizing Highlight Simulation
+        function togglePenMode() {
+            const container = document.getElementById('workspaceContainer');
+            const toggle = document.getElementById('penModeToggle');
+            if (toggle.checked) {
+                container.classList.add('pen-mode-active');
+            } else {
+                container.classList.remove('pen-mode-active');
+            }
+        }
+
+        // Simulating interactive Multiple Choice question for 1(a)
+        function checkMC(option) {
+            const buttons = document.querySelectorAll('.mc-btn');
+            buttons.forEach(btn => {
+                // Clear active states
+                btn.classList.remove('border-green-500', 'bg-green-50/50', 'text-green-800', 'font-bold', 'border-red-400', 'bg-red-50/50', 'text-red-800');
+                btn.classList.add('border-gray-200', 'bg-white', 'text-gray-800');
+                const icon = btn.querySelector('i');
+                if(icon) {
+                    icon.className = 'fa-regular fa-circle text-gray-300';
+                }
+            });
+
+            // Target selection alert feedback
+            if (option === 'D') {
+                const correctBtn = document.getElementById('mc-correct-btn');
+                correctBtn.classList.remove('border-gray-200', 'bg-white', 'text-gray-800');
+                correctBtn.classList.add('border-green-500', 'bg-green-50/50', 'text-green-800', 'font-bold');
+                correctBtn.querySelector('i').className = 'fa-solid fa-circle-check text-green-600';
+            } else {
+                // Flash the target clicked as red incorrect and keep D highlighted subtly
+                event.currentTarget.classList.remove('border-gray-200', 'bg-white', 'text-gray-800');
+                event.currentTarget.classList.add('border-red-400', 'bg-red-50/50', 'text-red-800', 'font-bold');
+                event.currentTarget.querySelector('i').className = 'fa-solid fa-circle-xmark text-red-500';
+                
+                // Keep the correct answer implicitly highlighted to show student the error
+                document.getElementById('mc-correct-btn').classList.add('border-green-500', 'bg-green-50/50');
+            }
+        }
+    </script>
+</body>
+</html>
