@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-2026 中六級上學期測驗一 - 公平貿易與全球化題解可視化</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        /* 三色筆模式預設與啟動樣式 */
+        .pen-mode-active .ans-topic {
+            color: #1d4ed8; /* 藍色 - 主題句 */
+            font-weight: 700;
+        }
+        .pen-mode-active .ans-source {
+            color: #111827; /* 黑/深灰 - 引用資料 */
+            font-weight: 600;
+        }
+        .pen-mode-active .ans-explain {
+            color: #15803d; /* 綠色 - 推論解釋 */
+            font-weight: 500;
+        }
+        .pen-mode-active .ans-own {
+            color: #6b21a8; /* 紫色 - 個人知識/補充 */
+            font-weight: 600;
+        }
+
+        /* 資料動態一對一高亮 (Data Source Dynamic Highlight Pairs) */
+        /* 預設非高亮狀態下 span 保持普通 */
+        .pair-amber, .pair-teal, .pair-rose, .pair-indigo, .pair-emerald {
+            transition: all 0.2s ease-in-out;
+            border-radius: 0.2rem;
+            padding: 0 0.15rem;
+        }
+
+        /* 1b 高亮模式 */
+        .source-hl-active.hl-active-1b .pair-1b-amber {
+            background-color: #fef3c7;
+            color: #92400e;
+            border-bottom: 2px solid #f59e0b;
+        }
+
+        /* 1c 高亮模式 */
+        .source-hl-active.hl-active-1c .pair-1c-teal {
+            background-color: #ccfbf1;
+            color: #115e59;
+            border-bottom: 2px solid #14b8a6;
+        }
+        .source-hl-active.hl-active-1c .pair-1c-rose {
+            background-color: #ffe4e6;
+            color: #9f1239;
+            border-bottom: 2px solid #f43f5e;
+        }
+
+        /* 1d 高亮模式 */
+        .source-hl-active.hl-active-1d .pair-1d-amber {
+            background-color: #fef3c7;
+            color: #92400e;
+            border-bottom: 2px solid #f59e0b;
+        }
+        .source-hl-active.hl-active-1d .pair-1d-emerald {
+            background-color: #d1fae5;
+            color: #065f46;
+            border-bottom: 2px solid #10b981;
+        }
+        .source-hl-active.hl-active-1d .pair-1d-indigo {
+            background-color: #e0e7ff;
+            color: #3730a3;
+            border-bottom: 2px solid #6366f1;
+        }
+
+        /* 左側資料卡片動態發光外框 */
+        .source-card-highlight {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+        }
+
+        /* 圖例按鈕微特效 */
+        .legend-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.625rem;
+            border-radius: 0.375rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col pen-mode-active source-hl-active">
+
+    <!-- 頂部頁頭 Header -->
+    <header class="bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] text-white border-b-4 border-blue-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="bg-yellow-400 text-blue-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">DSE 公民科題解</span>
+                    <span class="bg-blue-900/60 text-blue-100 text-xs px-2 py-0.5 rounded border border-blue-400/30">#選擇題</span>
+                    <span class="bg-blue-900/60 text-blue-100 text-xs px-2 py-0.5 rounded border border-blue-400/30">#資料回應題</span>
+                    <span class="bg-blue-900/60 text-blue-100 text-xs px-2 py-0.5 rounded border border-blue-400/30">#全球化</span>
+                    <span class="bg-blue-900/60 text-blue-100 text-xs px-2 py-0.5 rounded border border-blue-400/30">#公平貿易</span>
+                </div>
+                <h1 class="text-2xl font-bold mt-1">2025-2026 中六級上學期測驗一 - 全球化與公平貿易</h1>
+                <p class="text-blue-100 text-sm mt-0.5">中華基督教會燕京書院 | 三色筆視覺化系統解題</p>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-3 text-right text-xs text-white min-w-[200px] self-end md:self-auto">
+                <div class="font-semibold text-yellow-300 mb-1"><i class="fa-regular fa-clock mr-1"></i> 考試資訊</div>
+                <div>測驗日期：2025-09-25</div>
+                <div>限時：40 分鐘 | 總分：14 分</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要佈局 Layout -->
+    <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6 w-full flex-grow">
+        
+        <!-- 左側：資料冊 (Col 5) -->
+        <aside class="lg:col-span-5">
+            <div class="sticky top-6 bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                <div class="bg-gray-800 text-white px-4 py-3 flex justify-between items-center">
+                    <h2 class="font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-yellow-400"></i>
+                        考卷資料冊 (Data Sheet)
+                    </h2>
+                    <span class="bg-gray-700 text-xs px-2 py-0.5 rounded text-gray-200">共 3 則資料</span>
+                </div>
+
+                <div class="p-4 space-y-4 max-h-[calc(100vh-160px)] overflow-y-auto">
+                    
+                    <!-- 資料 A -->
+                    <div id="card-data-a" class="bg-slate-50 border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded">資料 A</span>
+                            <span class="text-xs text-gray-500">研究報告數據</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-3">取材自2020年7月聯合國糧食及農業組織有關歐洲朱古力供應鏈價值分配的比較研究報告。</p>
+
+                        <!-- 可視化圖表：朱古力供應鏈價值分配比較 -->
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 space-y-3">
+                            <div class="text-xs font-bold text-gray-700 border-b pb-1">朱古力供應鏈價值分配 (%)</div>
+                            
+                            <!-- 類別 1：沒有公平貿易標籤 -->
+                            <div>
+                                <div class="text-[11px] font-semibold text-gray-600 mb-1 flex justify-between">
+                                    <span>無公平貿易標籤朱古力</span>
+                                    <span class="text-red-500 font-bold">種植者僅佔 7.7%</span>
+                                </div>
+                                <div class="w-full h-5 bg-gray-100 rounded overflow-hidden flex text-[10px] text-white font-bold text-center leading-5">
+                                    <div class="bg-amber-600" style="width: 7.7%" title="可可種植者 7.7%">7.7%</div>
+                                    <div class="bg-blue-400" style="width: 7.6%" title="磨粉及加工業 7.6%">7.6%</div>
+                                    <div class="bg-indigo-500" style="width: 35.2%" title="朱古力製造業 35.2%">35.2%</div>
+                                    <div class="bg-slate-600" style="width: 49.5%" title="零售商及運輸業 49.5%">49.5%</div>
+                                </div>
+                            </div>
+
+                            <!-- 類別 2：有機及公平貿易認證標籤 -->
+                            <div>
+                                <div class="text-[11px] font-semibold text-gray-600 mb-1 flex justify-between">
+                                    <span>有機及公平貿易認證朱古力</span>
+                                    <span class="text-emerald-600 font-bold">種植者提升至 11.8%</span>
+                                </div>
+                                <div class="w-full h-5 bg-gray-100 rounded overflow-hidden flex text-[10px] text-white font-bold text-center leading-5">
+                                    <div class="bg-amber-600" style="width: 11.8%" title="可可種植者 11.8%">11.8%</div>
+                                    <div class="bg-blue-400" style="width: 11.6%" title="磨粉及加工業 11.6%">11.6%</div>
+                                    <div class="bg-indigo-500" style="width: 33.1%" title="朱古力製造業 33.1%">33.1%</div>
+                                    <div class="bg-slate-600" style="width: 43.5%" title="零售商及運輸業 43.5%">43.5%</div>
+                                </div>
+                            </div>
+
+                            <!-- 圖例 -->
+                            <div class="grid grid-cols-2 gap-1 text-[10px] text-gray-600 pt-1">
+                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-amber-600 rounded-sm"></span> 可可種植者</span>
+                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-blue-400 rounded-sm"></span> 磨粉及加工業</span>
+                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-indigo-500 rounded-sm"></span> 朱古力製造業</span>
+                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-slate-600 rounded-sm"></span> 零售商及運輸業</span>
+                            </div>
+                        </div>
+
+                        <!-- 文本高亮點 -->
+                        <div class="text-xs leading-relaxed text-gray-700 mt-3 pt-2 border-t border-gray-200">
+                            <strong>關鍵數據摘要：</strong><br>
+                            * <span class="pair-1c-rose">可可種植者在沒有公平貿易標籤的朱古力價值分配中佔比偏低，只有 7.7%</span>。<br>
+                            * 獲得有機及公平貿易認證後，可可種植者及加工業的獲利比例明顯提升。
+                        </div>
+                    </div>
+
+                    <!-- 資料 B -->
+                    <div id="card-data-b" class="bg-slate-50 border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-cyan-600 text-white text-xs font-bold px-2 py-0.5 rounded">資料 B</span>
+                            <span class="text-xs text-gray-500">倡議報導</span>
+                        </div>
+                        <p class="text-xs leading-relaxed text-gray-700">
+                            取材自2020年7月的樂施會倡議：<br>
+                            在推行公平貿易前，斯里蘭卡的農民支援組織 SOFA 的小農所種的香料和茶葉都是由中間人收購。<span class="pair-1b-amber">中間人在收購時多番壓價，令他們無法得到一個合理的回報。</span>他們於是組成小農合作社，以公平貿易原則運作。<span class="pair-1d-amber">協會設有公平貿易社區發展基金，為農民會員免費提供多種香料種子、茶樹的幼苗，牛羊等牲畜等，以推動有機耕作</span>；又支持當地婦女參與自僱計劃，製作採茶用的背籃，自力更生；並<span class="pair-1d-indigo">向小農戶的孩子提供學前教育，讓整個社區一同受惠</span>。
+                        </p>
+                    </div>
+
+                    <!-- 資料 C -->
+                    <div id="card-data-c" class="bg-slate-50 border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-purple-600 text-white text-xs font-bold px-2 py-0.5 rounded">資料 C</span>
+                            <span class="text-xs text-gray-500">新聞稿</span>
+                        </div>
+                        <p class="text-xs leading-relaxed text-gray-700">
+                            取材自2020年6月英國公平貿易基金會的新聞稿：<br>
+                            雀巢公司宣布旗下品牌 KitKat 不再採購使用公平貿易可可和公平貿易蔗糖，此舉意味着南半球數千名可可種植者和糖農每年損失近 200 萬英鎊的公平貿易基金。<span class="pair-1c-rose">西非的可可農民每天只能賺取不到一英鎊，遠低於極度貧困線</span>，這個數字僅略高於一塊 KitKat 朱古力的價格。<br><br>
+                            回顧過去 10 年 KitKat 在英國及愛爾蘭推出使用公平貿易可可的產品，為農民的生活帶來了極大的改變。<span class="pair-1d-emerald">可可合作社受益於公平貿易最低價格和固定保證金的安全網，能夠建造教室</span>、培訓當地婦女創業並使收入多元化。國際公平貿易組織的研究也顯示，<span class="pair-1c-teal">2019年非洲科特迪瓦公平貿易可可合作社及其農民成員因為公平貿易整體經濟價值增長了近35%</span>。
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </aside>
+
+        <!-- 右側：控制列與題目工作區 (Col 7) -->
+        <section class="lg:col-span-7 flex flex-col gap-4">
+            
+            <!-- 控制導航列 Control Bar -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <!-- 題號按鈕組 -->
+                <div class="inline-flex rounded-lg shadow-sm border border-gray-200" role="group">
+                    <button onclick="switchTab('1a')" id="btn-tab-1a" class="tab-btn px-3 py-1.5 text-xs font-bold rounded-l-lg bg-blue-600 text-white transition-all">1(a) 選擇題</button>
+                    <button onclick="switchTab('1b')" id="btn-tab-1b" class="tab-btn px-3 py-1.5 text-xs font-bold bg-white text-gray-700 border-l border-gray-200 hover:bg-gray-50 transition-all">1(b) 因素題</button>
+                    <button onclick="switchTab('1c')" id="btn-tab-1c" class="tab-btn px-3 py-1.5 text-xs font-bold bg-white text-gray-700 border-l border-gray-200 hover:bg-gray-50 transition-all">1(c) 影響題</button>
+                    <button onclick="switchTab('1d')" id="btn-tab-1d" class="tab-btn px-3 py-1.5 text-xs font-bold rounded-r-lg bg-white text-gray-700 border-l border-gray-200 hover:bg-gray-50 transition-all">1(d) 論述題</button>
+                </div>
+
+                <!-- 開關按鈕組 -->
+                <div class="flex items-center gap-4 text-xs font-medium">
+                    <!-- 三色筆切換 -->
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="toggle-pen" checked onchange="togglePenMode()" class="sr-only peer">
+                        <div class="relative w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-blue-600 peer-checked:to-green-600"></div>
+                        <span class="ml-2 text-gray-700">三色筆高亮</span>
+                    </label>
+
+                    <!-- 資料對應高亮切換 -->
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="toggle-source" checked onchange="toggleSourceHl()" class="sr-only peer">
+                        <div class="relative w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-amber-500"></div>
+                        <span class="ml-2 text-gray-700">資料對應筆</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 三色筆圖例說明列 -->
+            <div class="bg-blue-50/80 border border-blue-200 rounded-lg px-4 py-2 flex flex-wrap items-center gap-3 text-xs">
+                <span class="font-bold text-blue-900"><i class="fa-solid fa-palette mr-1"></i>三色筆圖例：</span>
+                <span class="legend-badge bg-blue-100 text-blue-800 border border-blue-300"><span class="w-2.5 h-2.5 rounded-full bg-blue-700"></span>■ 主題句 (1步)</span>
+                <span class="legend-badge bg-gray-100 text-gray-800 border border-gray-300"><span class="w-2.5 h-2.5 rounded-full bg-gray-800"></span>■ 引用資料 (2步)</span>
+                <span class="legend-badge bg-green-100 text-green-800 border border-green-300"><span class="w-2.5 h-2.5 rounded-full bg-green-700"></span>■ 推論解釋 (3步)</span>
+            </div>
+
+            <!-- 工作區：各題內容 Panels -->
+            
+            <!-- PANEL 1(a) -->
+            <div id="panel-1a" class="tab-panel bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-md">題號 1(a)</span>
+                        <h3 class="font-bold text-gray-800">資料數據理解題</h3>
+                    </div>
+                    <span class="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full text-xs font-semibold">滿分：1 分</span>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm leading-relaxed text-gray-800">
+                    <strong>題目：</strong>根據資料A，以下哪些是正確的描述？<br>
+                    (1) 可可種植者在朱古力供應鏈中獲取的利潤較低。<br>
+                    (2) 有機及公平貿易認證標籤可增加產品價值。<br>
+                    (3) 運輸業在朱古力供應鏈中佔主導地位。
+                </div>
+
+                <!-- 選擇題選項卡片 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                    <button onclick="checkMCQ('A')" class="mcq-option border-2 border-gray-200 rounded-xl p-3 text-left hover:bg-gray-50 flex justify-between items-center transition-all" id="mcq-A">
+                        <span>A. 只有 (2)</span>
+                        <i class="mcq-icon fa-regular fa-circle text-gray-400"></i>
+                    </button>
+                    <button onclick="checkMCQ('B')" class="mcq-option border-2 border-gray-200 rounded-xl p-3 text-left hover:bg-gray-50 flex justify-between items-center transition-all" id="mcq-B">
+                        <span>B. 只有 (1) 和 (2)</span>
+                        <i class="mcq-icon fa-regular fa-circle text-gray-400"></i>
+                    </button>
+                    <button onclick="checkMCQ('C')" class="mcq-option border-2 border-gray-200 rounded-xl p-3 text-left hover:bg-gray-50 flex justify-between items-center transition-all" id="mcq-C">
+                        <span>C. 只有 (1) 和 (3)</span>
+                        <i class="mcq-icon fa-regular fa-circle text-gray-400"></i>
+                    </button>
+                    <button onclick="checkMCQ('D')" class="mcq-option border-2 border-gray-200 rounded-xl p-3 text-left hover:bg-gray-50 flex justify-between items-center transition-all" id="mcq-D">
+                        <span>D. 只有 (2) 和 (3)</span>
+                        <i class="mcq-icon fa-regular fa-circle text-gray-400"></i>
+                    </button>
+                </div>
+
+                <!-- 揭曉答案按鈕 -->
+                <div id="reveal-btn-1a-container" class="text-center pt-2">
+                    <button onclick="revealAns('1a')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-lg shadow-md transition-all text-sm">
+                        <i class="fa-solid fa-eye mr-2"></i>我已思考完畢，查看正確答案與解析
+                    </button>
+                </div>
+
+                <!-- 答案解析區塊 -->
+                <div id="ans-box-1a" class="hidden space-y-4 pt-2">
+                    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                        <div class="font-bold text-green-800 text-base mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-green-600"></i>
+                            正確答案：B (只有 (1) 和 (2))
+                        </div>
+                        <ul class="space-y-1.5 text-xs text-gray-700">
+                            <li><span class="text-green-600 font-bold">✓ (1) 正確：</span>資料 A 顯示可可種植者分得利潤僅 7.7% 或 11.8%，為鏈內最少或次少部分，屬「較低」。</li>
+                            <li><span class="text-green-600 font-bold">✓ (2) 正確：</span>加入認證後，可可種植者（7.7%→11.8%）及磨粉加工（7.6%→11.6%）所得價值比例提升，增加了整體產品價值。</li>
+                            <li><span class="text-red-500 font-bold">✗ (3) 錯誤：</span>資料 A 將「零售商及運輸業」合併計算（49.5%及43.5%），無法單獨推論運輸業佔「主導地位」。</li>
+                        </ul>
+                    </div>
+
+                    <!-- 延伸教學模組 -->
+                    <div class="space-y-3">
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-900">
+                            <strong class="font-bold text-amber-800 flex items-center gap-1 mb-1">
+                                <i class="fa-solid fa-lightbulb"></i> 🔍 核心概念 / 數據解讀技巧
+                            </strong>
+                            DSE 數據選擇題常設「合併項目陷阱」。當圖表將「零售商與運輸業」合併呈現時，不能直接將整個百分比歸功於單一行業（如運輸業），需保持邏輯嚴謹。
+                        </div>
+
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-blue-900">
+                            <strong class="font-bold text-blue-800 flex items-center gap-1 mb-1">
+                                <i class="fa-solid fa-rocket"></i> 🚀 延伸預測
+                            </strong>
+                            未來考題可能要求學生「比較傳統貿易與公平貿易模式下利益分配的公平性」，需熟悉「國際分工中底層生產者獲利偏低」的情境。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 1(b) -->
+            <div id="panel-1b" class="tab-panel hidden bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-md">題號 1(b)</span>
+                        <h3 class="font-bold text-gray-800">因素分析題</h3>
+                    </div>
+                    <span class="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full text-xs font-semibold">滿分：2 分</span>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm leading-relaxed text-gray-800">
+                    <strong>題目：</strong>根據資料 B，指出及說明一個導致農民難以獲取合理回報的因素。（2分）
+                </div>
+
+                <!-- 揭曉按鈕 -->
+                <div id="reveal-btn-1b-container" class="text-center pt-2">
+                    <button onclick="revealAns('1b')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-lg shadow-md transition-all text-sm">
+                        <i class="fa-solid fa-eye mr-2"></i>我已思考完畢，查看正確答案與解析
+                    </button>
+                </div>
+
+                <!-- 答案解析區塊 -->
+                <div id="ans-box-1b" class="hidden space-y-4 pt-2">
+                    
+                    <!-- 範文解構 -->
+                    <div class="border border-dashed border-gray-300 bg-slate-50/50 rounded-xl p-4 text-sm leading-relaxed text-gray-800 space-y-2">
+                        <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">標準答題範文（三色筆結構）：</div>
+                        <p>
+                            <span class="ans-topic">導致農民難以獲取合理回報的因素是缺乏議價能力。</span>
+                            <span class="ans-source pair-1b-amber">資料B顯示在推行公平貿易前，中間人在收購時多番壓價，令斯里蘭卡的農民無法得到一個合理的回報。</span>
+                            <span class="ans-explain">農民通常處於供應鏈較低和被動的地位，較少渠道得知市場訊息，故缺乏對市場價格的理解和談判實力，難以為自己種植的農產品爭取到合理的收購價錢，故農民面對中間人多番壓價時顯得力不從心，只能接受中間人給出的低價條件以盡快出售農產品。</span>
+                        </p>
+                    </div>
+
+                    <!-- 延伸教學模組 -->
+                    <div class="space-y-3">
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-900">
+                            <strong class="font-bold text-amber-800 flex items-center gap-1 mb-1">
+                                <i class="fa-solid fa-award"></i> 🔍 核心評分標準 (2分)
+                            </strong>
+                            <ul class="list-disc pl-4 space-y-0.5">
+                                <li><strong>1分：</strong>準確指出核心因素（如：缺乏議價能力 / 資訊不對稱 / 依賴中間人）。</li>
+                                <li><strong>1分：</strong>能結合資料內容進行邏輯推論，解釋「為何」該因素導致獲利被壓低。</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-blue-900">
+                            <strong class="font-bold text-blue-800 flex items-center gap-1 mb-1">
+                                <i class="fa-solid fa-rocket"></i> 🚀 延伸預測
+                            </strong>
+                            考官常考「歸因題」。未來可試著將「議價能力不足」套用至其他發展中國家勞工或弱勢生產者，並溫習「小農合作社」如何透過集體談判權來扭轉此困境。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 1(c) -->
+            <div id="panel-1c" class="tab-panel hidden bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-md">題號 1(c)</span>
+                        <h3 class="font-bold text-gray-800">影響分析題 (正負雙向)</h3>
+                    </div>
+                    <span class="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full text-xs font-semibold">滿分：4 分</span>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm leading-relaxed text-gray-800">
+                    <strong>題目：</strong>根據資料 A 及 C，說明跨國企業在全球貿易中可能造成的一個正面影響和一個負面影響。（4分）
+                </div>
+
+                <!-- 揭曉按鈕 -->
+                <div id="reveal-btn-1c-container" class="text-center pt-2">
+                    <button onclick="revealAns('1c')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-lg shadow-md transition-all text-sm">
+                        <i class="fa-solid fa-eye mr-2"></i>我已思考完畢，查看正確答案與解析
+                    </button>
+                </div>
+
+                <!-- 答案解析區塊 -->
+                <div id="ans-box-1c" class="hidden space-y-4 pt-2">
+                    
+                    <!-- 範文解構 -->
+                    <div class="border border-dashed border-gray-300 bg-slate-50/50 rounded-xl p-4 text-sm leading-relaxed text-gray-800 space-y-4">
+                        <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">標準答題範文（分段三色筆）：</div>
+                        
+                        <!-- 正面影響 -->
+                        <div class="p-3 bg-white rounded-lg border border-emerald-100 shadow-sm">
+                            <div class="text-xs font-bold text-emerald-700 mb-1 flex items-center gap-1">
+                                <i class="fa-solid fa-circle-plus"></i> 正面影響 (2分)
+                            </div>
+                            <p>
+                                <span class="ans-topic">跨國企業在全球貿易中可能造成的一個正面影響是推動發展中國家發展。</span>
+                                <span class="ans-source pair-1c-teal">根據資料 C，2019 年非洲科特迪瓦整體經濟價值增長了近 35%。</span>
+                                <span class="ans-explain">跨國企業進行國際分工，將生產活動分配至世界各地。而每一環的分工都創造了產品的價值，帶動不同行業的發展。同時，跨國企業透過全球分銷網絡，帶動貨物進出口貿易，為發展中國家創造財富。</span>
+                            </p>
+                        </div>
+
+                        <!-- 負面影響 -->
+                        <div class="p-3 bg-white rounded-lg border border-rose-100 shadow-sm">
+                            <div class="text-xs font-bold text-rose-700 mb-1 flex items-center gap-1">
+                                <i class="fa-solid fa-circle-minus"></i> 負面影響 (2分)
+                            </div>
+                            <p>
+                                <span class="ans-topic">跨國企業在全球貿易中可能造成的一個負面影響是加劇財富分配不平均。</span>
+                                <span class="ans-source pair-1c-rose">資料 A 顯示可可種植者在沒有公平貿易標籤的朱古力價值分配中佔比偏低，只有 7.7%。而資料 C 西非的可可農民每天只能賺取不到一英鎊。</span>
+                                <span class="ans-explain">當跨國企業不按公平貿易原則採購，給予生產者不合理的薪酬待遇，會令發展中國家的農民受剝削，從而加劇財富分配不平均。</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 評分規準表格 -->
+                    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden text-xs">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 border-b text-gray-700 font-bold">
+                                    <th class="p-2 border-r w-1/4">得分維度</th>
+                                    <th class="p-2">表現說明</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="p-2 font-semibold text-emerald-700 border-r bg-emerald-50/30">正面影響 (2分)</td>
+                                    <td class="p-2">清晰指出正面影響（如：帶動經濟發展/創造財富），並精準引述資料 C 科特迪瓦數據，推論合理。</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-semibold text-rose-700 border-r bg-rose-50/30">負面影響 (2分)</td>
+                                    <td class="p-2">清晰指出負面影響（如：貧富懸殊/剝削農民），並同時結合資料 A (7.7%) 與 資料 C (不足1英鎊) 進行論述。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 延伸教學模組 -->
+                    <div class="space-y-3">
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-900">
+                            <strong class="font-bold text-amber-800 flex items-center gap-1 mb-1">
+                                <i class="fa-solid fa-lightbulb"></i> 🔍 核心概念：跨國企業的雙刃劍效應
+                            </strong>
+                            跨國企業是「經濟全球化」的主要推手。正面能帶來資本、技術與國際市場；負面則可能引發「競相廉價賣勞力 (Race to the bottom)」與利益壟斷問題。
+                        </div>
+
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-blue-900">
+                            <strong class="font-bold text-blue-800 flex items-center gap-1 mb-1">
+                                <i class="fa-solid fa-rocket"></i> 🚀 延伸預測
+                            </strong>
+                            DSE 經常要求學生評估「跨國企業的社會責任 (CSR)」。溫習時可留意企業終止公平貿易合作（如雀巢案例）對當地可持續發展帶來的衝擊。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 1(d) -->
+            <div id="panel-1d" class="tab-panel hidden bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-md">題號 1(d)</span>
+                        <h3 class="font-bold text-gray-800">資料支持度論述題</h3>
+                    </div>
+                    <span class="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full text-xs font-semibold">滿分：6 分</span>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm leading-relaxed text-gray-800">
+                    <strong>題目：</strong>「推動公平貿易能有效協助農民發展生計，提升生活水平。」所提供的資料如何支持這個看法？解釋你的答案。（6分）
+                </div>
+
+                <!-- 揭曉按鈕 -->
+                <div id="reveal-btn-1d-container" class="text-center pt-2">
+                    <button onclick="revealAns('1d')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-lg shadow-md transition-all text-sm">
+                        <i class="fa-solid fa-eye mr-2"></i>我已思考完畢，查看正確答案與解析
+                    </button>
+                </div>
+
+                <!-- 答案解析區塊 -->
+                <div id="ans-box-1d" class="hidden space-y-4 pt-2">
+                    
+                    <!-- 範文解構 -->
+                    <div class="border border-dashed border-gray-300 bg-slate-50/50 rounded-xl p-4 text-sm leading-relaxed text-gray-800 space-y-4">
+                        <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">標準答題範文（三步曲結構）：</div>
+
+                        <!-- 段落 1 -->
+                        <div class="p-3 bg-white rounded-lg border border-gray-200 shadow-sm space-y-1">
+                            <div class="text-xs font-bold text-blue-800 mb-1"><i class="fa-solid fa-align-left mr-1"></i>論點一：保障農民收入與經濟安全</div>
+                            <p>
+                                <span class="ans-topic">首先，資料反映推動公平貿易能保障農民收入，令農民能直接獲得農產品銷售所得的收入。</span>
+                                <span class="ans-source pair-1d-amber">資料 B 顯示以公平貿易原則運作的小農合作社，可避免中間人在收購時壓價，保障農民獲得合理回報。</span>
+                                <span class="ans-explain">推動公平貿易確保農民得到一定且穩定的回報，令農民的收入受到保障，同時避免遭受中間人壓價的機會，減低農民在貿易中被剝削的風險，令農民能為農產品爭取到更合理的價錢，提升收入比例，有助提高收入水平以改善生活。</span>
+                            </p>
+                        </div>
+
+                        <!-- 段落 2 -->
+                        <div class="p-3 bg-white rounded-lg border border-gray-200 shadow-sm space-y-1">
+                            <div class="text-xs font-bold text-blue-800 mb-1"><i class="fa-solid fa-align-left mr-1"></i>論點二：改善生產模式與技術支援</div>
+                            <p>
+                                <span class="ans-topic">其次，資料反映推動公平貿易能改善生產模式，提升農民生產能力，有助提高農民的農產品質量和生產效率。</span>
+                                <span class="ans-source pair-1d-emerald">資料 B 顯示公平貿易社區發展基金，為農民會員免費提供多種香料種子、茶樹的幼苗，牛羊等牲畜等，以推動有機耕作。</span>
+                                <span class="ans-explain">公平貿易機制為農民提供技術和資源上的支持。農民從中學習可持續農業方法和市場知識，瞭解有機農產品的經濟回報更高，同時獲得農業所需的資源，減少耕作成本。此有助促使農民發展有機耕作，採用經濟回報更高的耕作模式，有助提高農民的農產品質量和生產效率，長遠改善生活。</span>
+                            </p>
+                        </div>
+
+                        <!-- 段落 3 -->
+                        <div class="p-3 bg-white rounded-lg border border-gray-200 shadow-sm space-y-1">
+                            <div class="text-xs font-bold text-blue-800 mb-1"><i class="fa-solid fa-align-left mr-1"></i>論點三：推動教育發展與社區升級</div>
+                            <p>
+                                <span class="ans-topic">最後，資料反映推動公平貿易能推動教育發展，有助提高農民的知識和生活水平。</span>
+                                <span class="ans-source pair-1d-indigo">資料 B 顯示公平貿易社區發展基金向小農戶的孩子提供學前教育，讓整個社區一同受惠；資料 C 亦顯示受益於公平貿易的可可合作社能夠建造教室，發展教育。</span>
+                                <span class="ans-explain">推動公平貿易能改善當地教育設施和資源，彌補當地教育資源匱乏的問題，從而改善農民子女的學習條件，提升整體社區教育質素，向他們提供接受公平教育的機會。此有助提升其知識水平和競爭力，給予農民下一代改善生活和投資未來的機會。</span>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- 評分階梯 -->
+                    <div class="bg-amber-50/70 border border-amber-200 rounded-lg p-3 text-xs space-y-1 text-amber-900">
+                        <div class="font-bold text-amber-800"><i class="fa-solid fa-chart-line mr-1"></i>DSE 評卷維度 (高分表現)</div>
+                        <ul class="list-disc pl-4 space-y-0.5">
+                            <li><strong>5-6 分：</strong>能全面及適當運用資料 A, B, C 的多個要點，從「個人收入、生產技術、社區教育」多角度深入論證，邏輯嚴謹。</li>
+                            <li><strong>3-4 分：</strong>能運用部分資料進行說明，但論證較為平鋪直敘，角度較為單一。</li>
+                            <li><strong>1-2 分：</strong>僅抄錄資料，未能有效對應「協助發展生計」及「提升生活水平」。</li>
+                        </ul>
+                    </div>
+
+                    <!-- 延伸教學模組 -->
+                    <div class="space-y-3">
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-blue-900">
+                            <strong class="font-bold text-blue-800 flex items-center gap-1 mb-1">
+                                <i class="fa-solid fa-rocket"></i> 🚀 延伸預測與答題框架
+                            </strong>
+                            回答長題時，切忌單純寫「農民變有錢」。必須運用<strong>「三步曲（主題句 → 引用資料 → 邏輯推論）」</strong>，並將「生活水平」拆解為：<strong>經濟層面（收入保障）、生產層面（技能升級）、社會層面（教育與婦女權益）</strong>，這樣才能獲得最高等級 (5-6分)。
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- 頁腳 Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-4 border-t border-gray-800 text-center text-xs mt-auto">
+        <p>公民與社會發展科 DSE 題解視覺化系統 &copy; 2026 | 設計簡潔 · 學術嚴謹 · 互動高效</p>
+    </footer>
+
+    <!-- JavaScript 互動邏輯 -->
+    <script>
+        // 應用程式狀態 State
+        const state = {
+            currentTab: '1a',
+            penMode: true,
+            sourceHl: true,
+            revealed: {
+                '1a': false,
+                '1b': false,
+                '1c': false,
+                '1d': false
+            }
+        };
+
+        // 題目切換 (Switch Tab)
+        function switchTab(tabId) {
+            state.currentTab = tabId;
+
+            // 1. 更新 Tab 按鈕樣式
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
+            const activeBtn = document.getElementById(`btn-tab-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-gray-700');
+                activeBtn.classList.add('bg-blue-600', 'text-white');
+            }
+
+            // 2. 切換 Panel 顯示
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            const activePanel = document.getElementById(`panel-${tabId}`);
+            if (activePanel) {
+                activePanel.classList.remove('hidden');
+            }
+
+            // 3. 更新動態高亮狀態
+            updateSourceHighlightState();
+        }
+
+        // 揭曉答案 (Reveal Answer)
+        function revealAns(tabId) {
+            state.revealed[tabId] = true;
+
+            // 隱藏按鈕容器
+            const btnContainer = document.getElementById(`reveal-btn-${tabId}-container`);
+            if (btnContainer) {
+                btnContainer.classList.add('hidden');
+            }
+
+            // 顯示答案區塊
+            const ansBox = document.getElementById(`ans-box-${tabId}`);
+            if (ansBox) {
+                ansBox.classList.remove('hidden');
+            }
+
+            // 更新動態高亮
+            updateSourceHighlightState();
+        }
+
+        // 選擇題互動邏輯 (MCQ Check)
+        function checkMCQ(option) {
+            // 重置所有選項
+            ['A', 'B', 'C', 'D'].forEach(opt => {
+                const el = document.getElementById(`mcq-${opt}`);
+                const icon = el.querySelector('.mcq-icon');
+                el.className = "mcq-option border-2 border-gray-200 rounded-xl p-3 text-left hover:bg-gray-50 flex justify-between items-center transition-all";
+                icon.className = "mcq-icon fa-regular fa-circle text-gray-400";
+            });
+
+            const selectedEl = document.getElementById(`mcq-${option}`);
+            const selectedIcon = selectedEl.querySelector('.mcq-icon');
+
+            if (option === 'B') {
+                // 正確
+                selectedEl.className = "mcq-option border-2 border-green-500 bg-green-50/50 text-green-800 rounded-xl p-3 text-left flex justify-between items-center transition-all font-semibold";
+                selectedIcon.className = "mcq-icon fa-solid fa-circle-check text-green-600";
+            } else {
+                // 錯誤
+                selectedEl.className = "mcq-option border-2 border-red-400 bg-red-50/50 text-red-800 rounded-xl p-3 text-left flex justify-between items-center transition-all";
+                selectedIcon.className = "mcq-icon fa-solid fa-circle-xmark text-red-500";
+                
+                // 同時把正確標出
+                const correctEl = document.getElementById('mcq-B');
+                correctEl.className = "mcq-option border-2 border-green-500 bg-green-50/30 text-green-800 rounded-xl p-3 text-left flex justify-between items-center transition-all";
+            }
+
+            // 自動揭曉 1a 答案區
+            revealAns('1a');
+        }
+
+        // 切換三色筆模式 (Toggle Pen Mode)
+        function togglePenMode() {
+            state.penMode = document.getElementById('toggle-pen').checked;
+            if (state.penMode) {
+                document.body.classList.add('pen-mode-active');
+            } else {
+                document.body.classList.remove('pen-mode-active');
+            }
+        }
+
+        // 切換資料對應筆 (Toggle Source Highlight Pen)
+        function toggleSourceHl() {
+            state.sourceHl = document.getElementById('toggle-source').checked;
+            if (state.sourceHl) {
+                document.body.classList.add('source-hl-active');
+            } else {
+                document.body.classList.remove('source-hl-active');
+            }
+            updateSourceHighlightState();
+        }
+
+        // 核心動態高亮邏輯 (Update Dynamic Highlight State)
+        function updateSourceHighlightState() {
+            // 1. 清除 body 上所有舊的 hl-active-[題號] class
+            const hlClasses = ['hl-active-1a', 'hl-active-1b', 'hl-active-1c', 'hl-active-1d'];
+            hlClasses.forEach(c => document.body.classList.remove(c));
+
+            // 2. 清除左側資料卡片發光外框
+            ['card-data-a', 'card-data-b', 'card-data-c'].forEach(id => {
+                const card = document.getElementById(id);
+                if (card) card.classList.remove('source-card-highlight');
+            });
+
+            // 3. 判斷是否滿足高亮條件：資料對應筆開啟 + 當前題目答案已揭曉
+            const cur = state.currentTab;
+            const isRevealed = state.revealed[cur];
+
+            if (state.sourceHl && isRevealed) {
+                // 為 body 加上當前題號的 active class
+                document.body.classList.add(`hl-active-${cur}`);
+
+                // 根據題號亮起左側對應的資料卡片外框
+                if (cur === '1a') {
+                    document.getElementById('card-data-a')?.classList.add('source-card-highlight');
+                } else if (cur === '1b') {
+                    document.getElementById('card-data-b')?.classList.add('source-card-highlight');
+                } else if (cur === '1c') {
+                    document.getElementById('card-data-a')?.classList.add('source-card-highlight');
+                    document.getElementById('card-data-c')?.classList.add('source-card-highlight');
+                } else if (cur === '1d') {
+                    document.getElementById('card-data-a')?.classList.add('source-card-highlight');
+                    document.getElementById('card-data-b')?.classList.add('source-card-highlight');
+                    document.getElementById('card-data-c')?.classList.add('source-card-highlight');
+                }
+            }
+        }
+
+        // 初始化
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTab('1a');
+        });
+    </script>
+</body>
+</html>

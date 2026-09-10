@@ -3,140 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>公社科 DSE 題解溫習庫</title>
+    <title>公民與社會發展科 - DSE 題解可視化溫習庫</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
         body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8fafc; }
         .tag-badge { transition: all 0.2s ease; cursor: pointer; }
         .tag-badge:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="antialiased min-h-screen flex flex-col text-gray-800">
 
-    <!-- Header -->
+    <!-- 頂部頁頭 Header -->
     <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg">
         <div class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl font-bold tracking-tight mb-2">公民與社會發展科</h1>
-            <p class="text-blue-100 text-lg">DSE 題解可視化溫習庫</p>
-            
-            <!-- Search Bar -->
-            <div class="mt-6 max-w-xl mx-auto relative">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <div class="inline-flex items-center gap-2 bg-blue-800/80 border border-blue-400/30 px-3 py-1 rounded-full text-xs font-semibold text-blue-100 mb-3">
+                <i class="fa-solid fa-graduation-cap text-yellow-400"></i> HKDSE 備考自主學習平台
+            </div>
+            <h1 class="text-3xl font-extrabold tracking-tight mb-2">公民與社會發展科</h1>
+            <p class="text-blue-100 text-base">三色筆題解可視化 · 七維審題與答題架構庫</p>
+
+            <!-- 即時搜尋輸入框 -->
+            <div class="mt-6 max-w-2xl mx-auto relative">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
                 </div>
-                <input type="text" id="searchInput" onkeyup="filterQuizzes()" class="block w-full pl-10 pr-3 py-3 border border-transparent rounded-full leading-5 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:border-white sm:text-sm shadow-md" placeholder="搜尋課題、測驗名稱或關鍵字...">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    oninput="handleSearch(this.value)" 
+                    class="block w-full pl-11 pr-4 py-3.5 border border-transparent rounded-full leading-5 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 sm:text-sm shadow-md transition-all" 
+                    placeholder="搜尋學年、課題、概念、議題、題型或高頻考點..."
+                >
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- 主要內容區 -->
     <main class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8 flex-grow w-full">
-        
-        <!-- Filter Tags -->
-        <div class="mb-8 flex flex-wrap gap-2 justify-center" id="filterContainer">
-            <span class="bg-gray-800 text-white text-xs font-bold px-3 py-1.5 rounded-full tag-badge" onclick="filterByTag('all')">全部顯示</span>
-            <span class="bg-blue-100 text-blue-800 border border-blue-200 text-xs font-bold px-3 py-1.5 rounded-full tag-badge" onclick="filterByTag('S5')">#S5</span>
-            <span class="bg-purple-100 text-purple-800 border border-purple-200 text-xs font-bold px-3 py-1.5 rounded-full tag-badge" onclick="filterByTag('國家安全')">#國家安全</span>
-            <span class="bg-green-100 text-green-800 border border-green-200 text-xs font-bold px-3 py-1.5 rounded-full tag-badge" onclick="filterByTag('資訊素養')">#資訊素養</span>
-            <span class="bg-yellow-100 text-yellow-800 border border-yellow-200 text-xs font-bold px-3 py-1.5 rounded-full tag-badge" onclick="filterByTag('資料回應題')">#資料回應題</span>
-        </div>
 
-        <!-- Quiz Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="quizGrid">
+        <!-- 七大多維度篩選區域 -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 mb-8 space-y-4">
             
-            <!-- Quiz Card 1 (剛才設計的測驗) -->
-  <!-- Quiz Card -->
-            <div class="relative quiz-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow" data-tags="S5 PASTPAPER 多項選擇題 資料回應題 短答題 正面影響 影響題 解釋某個看法 負面影響 國家安全 資訊素養">
-                <div class="bg-blue-600 h-2 w-full"></div>
-                <!-- PASTPAPER 標示 -->
-                <div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-bl-lg z-10 shadow-sm tracking-wider"><i class="fa-solid fa-star mr-1"></i>PASTPAPER</div>
-                <div class="p-5">
-                    <div class="flex justify-between items-start mb-2 mt-1">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">中五級</span>
-                        <span class="text-xs text-gray-400 font-medium">04-09-2026</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-1 quiz-title">上學期測驗四（資訊素養與國家安全）</h3>
-                    <p class="text-sm text-gray-600 mb-4 h-10 overflow-hidden leading-relaxed">涵蓋資訊科技發展特徵、總體國家安全觀及智能聊天機器人教育應用。</p>
-                    <div class="flex flex-wrap gap-1.5 mb-4">
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#多項選擇題</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#資料回應題</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#短答題</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#正面影響</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#影響題</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#解釋某個看法</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#負面影響</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#國家安全</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#資訊素養</span>
-                    </div>
-                    <a href="gemini-code-1788485900392.html" target="_blank" class="block w-full text-center bg-gray-50 hover:bg-blue-50 text-blue-600 font-bold border border-gray-200 py-2.5 rounded-lg text-sm transition-colors shadow-sm">
-                        進入三色筆題解 <i class="fa-solid fa-arrow-right ml-1"></i>
-                    </a>
+            <!-- 1. 學年維度 & 2. 級別維度 (並列) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-600 min-w-[70px]"><i class="fa-regular fa-calendar mr-1"></i>學年：</span>
+                    <div id="filter-year" class="flex flex-wrap gap-1.5"></div>
                 </div>
-            </div>          
-            
-            <!-- 將來新的 HTML 卡片只需複製並貼在這裡 -->
-
-<!-- Quiz Card -->
-            <div class="relative quiz-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow" data-tags="S6 資料回應題 因素題 影響題 資料論證題 全球化 公平貿易 生活素質">
-                <div class="bg-blue-600 h-2 w-full"></div>
-                <div class="p-5">
-                    <div class="flex justify-between items-start mb-2 mt-1">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">中六級</span>
-                        <span class="text-xs text-gray-400 font-medium">07-09-2026</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-1 quiz-title">全球貿易與公平貿易：農民生計與跨國企業的影響</h3>
-                    <p class="text-sm text-gray-600 mb-4 h-10 overflow-hidden leading-relaxed">以全球貿易與公平貿易為核心，透過數據及個案分析跨國企業、中間人與發展中國家農民之間的利益分配，進而評估公平貿易對保障農民生計與提升生活水平的作用。</p>
-                    <div class="flex flex-wrap gap-1.5 mb-4">
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#資料回應題</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#因素題</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#影響題</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#資料論證題</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#全球化</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#公平貿易</span>
-                        <span class="text-[10px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded shadow-sm">#生活素質</span>
-                    </div>
-                    <a href="gemini-code-1788767634109.html" target="_blank" class="block w-full text-center bg-gray-50 hover:bg-blue-50 text-blue-600 font-bold border border-gray-200 py-2.5 rounded-lg text-sm transition-colors shadow-sm">
-                        進入三色筆題解 <i class="fa-solid fa-arrow-right ml-1"></i>
-                    </a>
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-600 min-w-[70px]"><i class="fa-solid fa-layer-group mr-1"></i>級別：</span>
+                    <div id="filter-grade" class="flex flex-wrap gap-1.5"></div>
                 </div>
             </div>
 
+            <!-- 3. 主題維度（第一級聯動） -->
+            <div class="flex flex-wrap items-center gap-2 border-t border-gray-100 pt-3">
+                <span class="text-xs font-bold text-blue-700 min-w-[70px]"><i class="fa-solid fa-landmark mr-1"></i>核心主題：</span>
+                <div id="filter-theme" class="flex flex-wrap gap-1.5"></div>
+            </div>
+
+            <!-- 4. 課題範疇維度（第二級聯動：根據所選主題動態變換） -->
+            <div class="flex flex-wrap items-center gap-2 border-t border-gray-100 pt-3">
+                <span class="text-xs font-bold text-emerald-700 min-w-[70px]"><i class="fa-solid fa-book-bookmark mr-1"></i>課題範疇：</span>
+                <div id="filter-topic" class="flex flex-wrap gap-1.5"></div>
+            </div>
+
+            <!-- 5. 題型分類維度 -->
+            <div class="flex flex-wrap items-center gap-2 border-t border-gray-100 pt-3">
+                <span class="text-xs font-bold text-purple-700 min-w-[70px]"><i class="fa-solid fa-list-check mr-1"></i>題型分類：</span>
+                <div id="filter-qtype" class="flex flex-wrap gap-1.5"></div>
+            </div>
+
+            <!-- 6. 核心概念維度 -->
+            <div class="flex flex-wrap items-center gap-2 border-t border-gray-100 pt-3">
+                <span class="text-xs font-bold text-amber-700 min-w-[70px]"><i class="fa-solid fa-lightbulb mr-1"></i>核心概念：</span>
+                <div id="filter-concept" class="flex flex-wrap gap-1.5"></div>
+            </div>
+
+            <!-- 7. 議題篩選維度 -->
+            <div class="flex flex-wrap items-center gap-2 border-t border-gray-100 pt-3">
+                <span class="text-xs font-bold text-cyan-700 min-w-[70px]"><i class="fa-solid fa-newspaper mr-1"></i>資料議題：</span>
+                <div id="filter-issue" class="flex flex-wrap gap-1.5"></div>
+            </div>
+
+            <!-- PASTPAPER 獨立開關與重設 -->
+            <div class="flex flex-wrap items-center justify-between gap-3 border-t border-gray-100 pt-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 min-w-[70px]"><i class="fa-solid fa-star text-amber-500 mr-1"></i>試卷性質：</span>
+                    <button 
+                        id="btn-pastpaper-toggle" 
+                        onclick="togglePastPaperOnly()" 
+                        class="px-3.5 py-1.5 rounded-full text-xs font-bold border transition border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100 shadow-sm"
+                    >
+                        <i class="fa-solid fa-star text-amber-500 mr-1"></i>只顯示 PASTPAPER
+                    </button>
+                </div>
+                <button 
+                    onclick="resetAllFilters()" 
+                    class="text-xs text-blue-600 hover:text-blue-800 hover:underline flex items-center gap-1 font-semibold"
+                >
+                    <i class="fa-solid fa-rotate-right"></i> 重設所有條件
+                </button>
+            </div>
+        </div>
+
+        <!-- 結果統計標題 -->
+        <div class="flex justify-between items-center mb-4 px-1">
+            <span class="text-xs font-medium text-gray-500" id="resultCount">載入中...</span>
+        </div>
+
+        <!-- 測驗題目卡片網格 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="quizGrid">
+            <!-- 由 JavaScript 自動產生 -->
+        </div>
 
     </main>
 
+    <!-- 頁腳 Footer -->
     <footer class="bg-gray-100 py-6 text-center border-t border-gray-200 mt-auto">
-        <p class="text-xs text-gray-500">© 公民與社會發展科校本題解庫 | 鼓勵自主學習</p>
+        <p class="text-xs text-gray-500">© 公民與社會發展科校本題解庫 | 鼓勵自主學習 · 聚焦三步曲思維</p>
     </footer>
 
+    <!-- 核心數據載入、兩級聯動與檢索邏輯 -->
     <script>
-        // Simple search and filter logic
-        function filterQuizzes() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.quiz-card');
-            
-            cards.forEach(card => {
-                const title = card.querySelector('.quiz-title').innerText.toLowerCase();
-                const tags = card.getAttribute('data-tags').toLowerCase();
-                if (title.includes(input) || tags.includes(input)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        // 公社科官方課程指引兩級映射字典 (Theme -> Topics)
+        const themeMapping = {
+            "主題一：「一國兩制」下的香港": [
+                "「一國兩制」的內涵與實踐",
+                "香港特別行政區的憲制背景及政治體制",
+                "國家安全與維護國家安全法",
+                "香港的法律制度與法治精神",
+                "香港特區的參與國家事務與國際角色"
+            ],
+            "主題二：改革開放以來的國家": [
+                "改革開放的歷程與經濟成就",
+                "人民生活水平的轉變與綜合國力提升",
+                "國家現代化建設與科技創新",
+                "中華優秀傳統文化與現代社會",
+                "環境保護與生態文明建設"
+            ],
+            "主題三：互聯相依的世界": [
+                "經濟全球化與國際分工",
+                "可持續發展與全球環境議題",
+                "公共衛生與全球疾控合作",
+                "國際組織與全球治理",
+                "跨國科技發展與全球合作網絡"
+            ]
+        };
+
+        let allQuizzes = [];
+        let activeFilters = {
+            year: 'all',
+            grade: 'all',
+            theme: 'all',
+            topic: 'all',
+            qtype: 'all',
+            concept: 'all',
+            issue: 'all',
+            pastPaperOnly: false,
+            keyword: ''
+        };
+
+        // 載入 JSON 數據庫
+        async function fetchQuizData() {
+            try {
+                const response = await fetch('quizzes.json');
+                if (!response.ok) throw new Error('網絡請求失敗');
+                allQuizzes = await response.json();
+                buildFilterButtons();
+                applyFilters();
+            } catch (error) {
+                console.error('無法讀取 quizzes.json:', error);
+                document.getElementById('quizGrid').innerHTML = `
+                    <div class="col-span-full bg-amber-50 border border-amber-200 rounded-xl p-6 text-center text-amber-800 text-sm">
+                        <i class="fa-solid fa-triangle-exclamation text-xl mb-2 text-amber-600 block"></i>
+                        未能讀取題目目錄檔案 (quizzes.json)。請確認該檔案已上載至倉庫根目錄。
+                    </div>
+                `;
+                document.getElementById('resultCount').innerText = '載入失敗';
+            }
         }
 
-        function filterByTag(tag) {
-            const cards = document.querySelectorAll('.quiz-card');
-            cards.forEach(card => {
-                if (tag === 'all' || card.getAttribute('data-tags').includes(tag)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        // 動態生成所有多維度按鈕
+        function buildFilterButtons() {
+            // 1. 年級
+            const years = ['all', ...new Set(allQuizzes.map(q => q.year).filter(Boolean))];
+            renderButtonGroup('filter-year', years, 'year');
+
+            // 2. 級別
+            const grades = ['all', ...new Set(allQuizzes.map(q => q.grade).filter(Boolean))];
+            renderButtonGroup('filter-grade', grades, 'grade', '級');
+
+            // 3. 主題（第一級）
+            const themes = ['all', ...Object.keys(themeMapping)];
+            renderButtonGroup('filter-theme', themes, 'theme');
+
+            // 4. 課題（第二級聯動）
+            let availableTopics = [];
+            if (activeFilters.theme === 'all') {
+                // 如果主題選全部，提取題庫中出現過的所有課題
+                availableTopics = ['all', ...new Set(allQuizzes.flatMap(q => q.topics || []).filter(Boolean))];
+            } else {
+                // 如果選取了特定主題，只顯示該主題映射的課題
+                availableTopics = ['all', ...(themeMapping[activeFilters.theme] || [])];
+            }
+            renderButtonGroup('filter-topic', availableTopics, 'topic');
+
+            // 5. 題型
+            const qtypes = ['all', ...new Set(allQuizzes.flatMap(q => q.question_types || []).filter(Boolean))];
+            renderButtonGroup('filter-qtype', qtypes, 'qtype');
+
+            // 6. 核心概念
+            const concepts = ['all', ...new Set(allQuizzes.flatMap(q => q.concepts || []).filter(Boolean))];
+            renderButtonGroup('filter-concept', concepts, 'concept', '', 'amber');
+
+            // 7. 議題
+            const issues = ['all', ...new Set(allQuizzes.flatMap(q => q.issues || []).filter(Boolean))];
+            renderButtonGroup('filter-issue', issues, 'issue', '', 'cyan');
         }
+
+        // 渲染通用按鈕組函數
+        function renderButtonGroup(containerId, items, filterKey, suffix = '', colorScheme = 'blue') {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            container.innerHTML = items.map(item => {
+                const isSelected = activeFilters[filterKey] === item;
+                const label = item === 'all' ? '全部' : `${item}${suffix}`;
+                const baseClass = "px-2.5 py-1 rounded-full text-xs font-semibold tag-badge transition-all";
+
+                let activeClass = "bg-blue-600 text-white shadow-sm";
+                if (colorScheme === 'amber') activeClass = "bg-amber-600 text-white shadow-sm";
+                if (colorScheme === 'cyan') activeClass = "bg-cyan-700 text-white shadow-sm";
+
+                const colorClass = isSelected 
+                    ? activeClass 
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200";
+
+                return `<button onclick="setFilter('${filterKey}', '${item.replace(/'/g, "\\'")}')" class="${baseClass} ${colorClass}">${label}</button>`;
+            }).join('');
+        }
+
+        // 篩選與狀態聯動
+        function setFilter(key, val) {
+            activeFilters[key] = val;
+
+            // 核心聯動：如果切換了主題，自動重設課題為 'all'
+            if (key === 'theme') {
+                activeFilters.topic = 'all';
+            }
+
+            buildFilterButtons();
+            applyFilters();
+        }
+
+        // PASTPAPER 獨立切換
+        function togglePastPaperOnly() {
+            activeFilters.pastPaperOnly = !activeFilters.pastPaperOnly;
+            const btn = document.getElementById('btn-pastpaper-toggle');
+            if (activeFilters.pastPaperOnly) {
+                btn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold border transition bg-red-600 text-white border-red-600 shadow-sm";
+            } else {
+                btn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold border transition border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100 shadow-sm";
+            }
+            applyFilters();
+        }
+
+        // 關鍵字搜尋監聽
+        function handleSearch(val) {
+            activeFilters.keyword = val.trim().toLowerCase();
+            applyFilters();
+        }
+
+        // 重設所有篩選
+        function resetAllFilters() {
+            activeFilters = {
+                year: 'all',
+                grade: 'all',
+                theme: 'all',
+                topic: 'all',
+                qtype: 'all',
+                concept: 'all',
+                issue: 'all',
+                pastPaperOnly: false,
+                keyword: ''
+            };
+            document.getElementById('searchInput').value = '';
+            const btn = document.getElementById('btn-pastpaper-toggle');
+            btn.className = "px-3.5 py-1.5 rounded-full text-xs font-bold border transition border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100 shadow-sm";
+            buildFilterButtons();
+            applyFilters();
+        }
+
+        // 執行多維交集篩選並繪製卡片
+        function applyFilters() {
+            const grid = document.getElementById('quizGrid');
+            const countEl = document.getElementById('resultCount');
+
+            const filtered = allQuizzes.filter(q => {
+                // 1. 學年
+                const matchYear = activeFilters.year === 'all' || q.year === activeFilters.year;
+                // 2. 級別
+                const matchGrade = activeFilters.grade === 'all' || q.grade === activeFilters.grade;
+                // 3. 主題
+                const matchTheme = activeFilters.theme === 'all' || q.theme === activeFilters.theme;
+                // 4. 課題
+                const matchTopic = activeFilters.topic === 'all' || (q.topics && q.topics.includes(activeFilters.topic));
+                // 5. 題型
+                const matchQType = activeFilters.qtype === 'all' || (q.question_types && q.question_types.includes(activeFilters.qtype));
+                // 6. 核心概念
+                const matchConcept = activeFilters.concept === 'all' || (q.concepts && q.concepts.includes(activeFilters.concept));
+                // 7. 議題
+                const matchIssue = activeFilters.issue === 'all' || (q.issues && q.issues.includes(activeFilters.issue));
+                // PASTPAPER 匹配
+                const matchPP = !activeFilters.pastPaperOnly || q.is_pastpaper === true;
+
+                // 綜合搜尋關鍵字 (遍歷所有字段與考點)
+                const searchTarget = [
+                    q.title || '',
+                    q.description || '',
+                    q.theme || '',
+                    ...(q.topics || []),
+                    ...(q.concepts || []),
+                    ...(q.question_types || []),
+                    ...(q.issues || []),
+                    q.dse_focus || '',
+                    q.grade || '',
+                    q.year || ''
+                ].join(' ').toLowerCase();
+                const matchKeyword = !activeFilters.keyword || searchTarget.includes(activeFilters.keyword);
+
+                return matchYear && matchGrade && matchTheme && matchTopic && matchQType && matchConcept && matchIssue && matchPP && matchKeyword;
+            });
+
+            countEl.innerText = `共找到 ${filtered.length} 份測驗/試題資源`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center text-gray-400">
+                        <i class="fa-regular fa-folder-open text-4xl mb-3 text-gray-300 block"></i>
+                        沒有找到符合篩選條件的題目，請嘗試放寬條件或點選「重設所有條件」。
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(q => {
+                const pastPaperBadge = q.is_pastpaper 
+                    ? `<div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-bl-lg z-10 shadow-sm tracking-wider"><i class="fa-solid fa-star mr-1"></i>PASTPAPER</div>`
+                    : '';
+
+                // 主題徽章
+                const themeBadge = q.theme 
+                    ? `<div class="text-[11px] font-bold text-blue-900 bg-blue-50/80 px-2 py-0.5 rounded border border-blue-200 inline-block mb-2"><i class="fa-solid fa-landmark mr-1"></i>${q.theme}</div>`
+                    : '';
+
+                // 高頻考點
+                const dseFocusBadge = q.dse_focus 
+                    ? `<div class="bg-amber-50 border-l-2 border-amber-500 p-2 text-[11px] text-amber-900 mb-3 rounded-r"><span class="font-bold"><i class="fa-solid fa-fire mr-1 text-amber-600"></i>DSE考點：</span>${q.dse_focus}</div>`
+                    : '';
+
+                // 議題
+                const issueBadges = (q.issues || []).map(iss => 
+                    `<span class="text-[10px] font-bold text-cyan-800 bg-cyan-50 border border-cyan-200 px-1.5 py-0.5 rounded"><i class="fa-solid fa-newspaper mr-1"></i>${iss}</span>`
+                ).join(' ');
+
+                // 課題標籤
+                const topicBadges = (q.topics || []).map(t => 
+                    `<span onclick="setFilter('topic', '${t}')" class="cursor-pointer text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded hover:bg-emerald-100">#${t}</span>`
+                ).join(' ');
+
+                // 概念標籤
+                const conceptBadges = (q.concepts || []).map(c => 
+                    `<span onclick="setFilter('concept', '${c}')" class="cursor-pointer text-[10px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded hover:bg-amber-100">#${c}</span>`
+                ).join(' ');
+
+                // 題型標籤
+                const qtypeBadges = (q.question_types || []).map(qt => 
+                    `<span onclick="setFilter('qtype', '${qt}')" class="cursor-pointer text-[10px] font-bold text-purple-800 bg-purple-50 border border-purple-200 px-1.5 py-0.5 rounded hover:bg-purple-100">${qt}</span>`
+                ).join(' ');
+
+                return `
+                <div class="relative quiz-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="bg-blue-600 h-2 w-full"></div>
+                        ${pastPaperBadge}
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2 mt-1">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">${q.grade || '公民科'} · ${q.year || ''}</span>
+                                <span class="text-xs text-gray-400 font-medium">${q.date || ''}</span>
+                            </div>
+
+                            ${themeBadge}
+
+                            <h3 class="text-base font-bold text-gray-900 mb-2 leading-snug">${q.title}</h3>
+                            <p class="text-xs text-gray-600 mb-3 line-clamp-2 leading-relaxed">${q.description || '點擊進入查閱完整三色筆三步曲步驟題解。'}</p>
+
+                            ${dseFocusBadge}
+
+                            <!-- 議題與標籤集錦 -->
+                            <div class="flex flex-wrap gap-1.5 mb-2">
+                                ${issueBadges}
+                                ${topicBadges}
+                                ${conceptBadges}
+                                ${qtypeBadges}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-0">
+                        <a href="${q.file_path}" target="_blank" class="block w-full text-center bg-gray-50 hover:bg-blue-50 text-blue-600 font-bold border border-gray-200 hover:border-blue-300 py-2.5 rounded-lg text-xs transition-colors shadow-sm">
+                            進入三色筆題解 <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // 頁面初始化
+        document.addEventListener('DOMContentLoaded', fetchQuizData);
     </script>
 </body>
 </html>
