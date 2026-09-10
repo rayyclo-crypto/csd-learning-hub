@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中五級上學期測驗一 - 內地新經濟模式與生活素質</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        
+        /* 三色筆模式 */
+        .pen-mode-active .ans-topic { color: #2563eb; font-weight: 700; } /* 藍色：主題句 */
+        .pen-mode-active .ans-source { color: #1f2937; font-weight: 700; background-color: rgba(0,0,0,0.05); padding: 0 4px; border-radius: 4px;} /* 黑色：引用資料 */
+        .pen-mode-active .ans-explain { color: #16a34a; font-weight: 700; } /* 綠色：推論解釋 */
+
+        /* 資料高亮模式 */
+        .source-hl-active.hl-active-1b .pair-purple { background-color: #e9d5ff; color: #581c87; border-radius: 4px; padding: 2px 4px; transition: all 0.3s;}
+        .source-hl-active.hl-active-1c .pair-amber { background-color: #fde68a; color: #92400e; border-radius: 4px; padding: 2px 4px; transition: all 0.3s;}
+        .source-hl-active.hl-active-1c .pair-teal { background-color: #99f6e4; color: #115e59; border-radius: 4px; padding: 2px 4px; transition: all 0.3s;}
+        .source-hl-active.hl-active-1c .pair-rose { background-color: #fecdd3; color: #9f1239; border-radius: 4px; padding: 2px 4px; transition: all 0.3s;}
+        
+        /* 就我所知高亮 */
+        .source-hl-active.hl-active-1d .pair-blue { background-color: #bfdbfe; color: #1e3a8a; border-radius: 4px; padding: 2px 4px; transition: all 0.3s;}
+
+        .source-card-highlight {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #68D391;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #68D391;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col pen-mode-active source-hl-active">
+
+    <!-- 頂部頁頭 -->
+    <header class="bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] border-b-4 border-blue-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <span class="bg-yellow-400 text-blue-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase shadow-sm">
+                    主題二：改革開放以來的國家
+                </span>
+                <h1 class="text-2xl font-bold mt-2 text-white">中五級上學期測驗一 - 內地新經濟模式與生活素質</h1>
+                <p class="text-blue-100 text-sm mt-1">中華基督教會燕京書院 | <span class="opacity-80">#選擇題 #資料論證題 #種草經濟 #生活素質</span></p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-3 text-right text-xs text-white min-w-[150px]">
+                <div class="flex justify-between border-b border-white/20 pb-1 mb-1">
+                    <span class="opacity-80">測驗日期</span>
+                    <span class="font-bold">16-10-2025</span>
+                </div>
+                <div class="flex justify-between border-b border-white/20 pb-1 mb-1">
+                    <span class="opacity-80">建議時限</span>
+                    <span class="font-bold">40 分鐘</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="opacity-80">總分</span>
+                    <span class="font-bold text-yellow-300">12 分</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 佈局架構 -->
+    <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6 w-full flex-grow">
+        
+        <!-- 左側：資料冊 -->
+        <div class="lg:col-span-5 relative">
+            <div class="sticky top-6 bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden flex flex-col max-h-[calc(100vh-40px)]">
+                <div class="bg-gray-800 text-white px-4 py-3 flex justify-between items-center z-10">
+                    <div class="font-bold"><i class="fa-solid fa-book-open mr-2"></i>考卷資料冊</div>
+                    <div class="bg-gray-700 text-xs px-2 py-0.5 rounded shadow-inner">共 3 則資料</div>
+                </div>
+                <div class="p-4 overflow-y-auto space-y-4 flex-grow bg-gray-50/50">
+                    
+                    <!-- 資料 A -->
+                    <div id="source-A" class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:border-blue-300 transition-all">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded mr-2">資料 A</span>
+                            <span class="text-xs text-gray-500">取材自2024年3月的專題報道</span>
+                        </div>
+                        <div class="text-sm text-gray-700 leading-relaxed space-y-2">
+                            <p>「種草」是中國內地現今流行的網絡潮語，泛指「把一樣事物推薦他人，讓其他人也喜歡這事物的過程」，更成為現代網絡衝流量，拼業績的推廣方式，並形成「種草經濟」。</p>
+                            <p><span class="pair-teal">「種草經濟」所指的是網民透過各類網上平台與他人分享產品的使用感受，達至刺激別人對某商品產生購買意欲。</span>「種草經濟」不同於傳統消費業態，以往是「貨找人」，先有庫存，再有營銷，而在「種草經濟」的推廣模式下，變成了「人找貨」，消費者因有尋找貨品的意欲，繼而主動了解產品資訊進而消費，是一種創新的商業模式。</p>
+                        </div>
+                    </div>
+
+                    <!-- 資料 B -->
+                    <div id="source-B" class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:border-blue-300 transition-all">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded mr-2">資料 B</span>
+                            <span class="text-xs text-gray-500">取材自2023年11月的《小紅書文旅種草指南》出行趨勢觀察</span>
+                        </div>
+                        <div class="text-sm text-gray-700 leading-relaxed">
+                            <table class="w-full text-left border-collapse mt-2">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="border-b border-gray-200 py-2 px-3 text-gray-600 font-semibold">話題</th>
+                                        <th class="border-b border-gray-200 py-2 px-3 text-gray-600 font-semibold">瀏覽量</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="pair-purple block-table-row">
+                                        <td class="border-b border-gray-100 py-2 px-3">#Citywalk（城市漫步）</td>
+                                        <td class="border-b border-gray-100 py-2 px-3">4.4億</td>
+                                    </tr>
+                                    <tr class="pair-purple block-table-row">
+                                        <td class="border-b border-gray-100 py-2 px-3">#人文掃街</td>
+                                        <td class="border-b border-gray-100 py-2 px-3">4.2億</td>
+                                    </tr>
+                                    <tr class="pair-purple block-table-row">
+                                        <td class="border-b border-gray-100 py-2 px-3">#徒步路線推薦</td>
+                                        <td class="border-b border-gray-100 py-2 px-3">6.5億</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b border-gray-100 py-2 px-3">#每周一山</td>
+                                        <td class="border-b border-gray-100 py-2 px-3">3.2億</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b border-gray-100 py-2 px-3">#十一旅行日記</td>
+                                        <td class="border-b border-gray-100 py-2 px-3">4.3億</td>
+                                    </tr>
+                                    <tr class="pair-purple block-table-row">
+                                        <td class="py-2 px-3 font-bold text-gray-900">#周末去哪兒</td>
+                                        <td class="py-2 px-3 font-bold text-gray-900">198億</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 資料 C -->
+                    <div id="source-C" class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:border-blue-300 transition-all">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-rose-100 text-rose-800 text-xs font-bold px-2 py-1 rounded mr-2">資料 C</span>
+                            <span class="text-xs text-gray-500">節錄自2022年4月及8月的專題報道</span>
+                        </div>
+                        <div class="text-sm text-gray-700 leading-relaxed">
+                            <p>居民消費水平提升，持續驅動「種草經濟」發展。<span class="pair-amber">國家統計局公佈的資料顯示，2021年全年全國居民人均可支配收入為35,128元，扣除價格因素，實際增長8.1%。</span>近年來，主打購物體驗分享的種草筆記影響了諸多消費者，在引導消費方面的作用也不容小覷。<span class="pair-amber">消費者十分欣賞所關注網紅KOL的生活態度和生活方式等，會竭盡全力地去模仿KOL，包括購置同款商品</span>，打卡同款地點等。目前，「種草經濟」已達千億元規模，其中<span class="pair-rose">線上渠道已成為中國消費的重要陣地</span>，「種草經濟」作為新興經濟模式也呈現出快速增長的態勢。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右側：控制列與題目工作區 -->
+        <div class="lg:col-span-7 flex flex-col gap-4">
+            
+            <!-- 控制列 -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4 sticky top-6 z-20">
+                <div class="inline-flex rounded-lg shadow-sm w-full sm:w-auto" role="group">
+                    <button type="button" onclick="switchTab('1a')" id="btn-1a" class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium bg-blue-600 text-white border border-gray-200 rounded-l-lg hover:bg-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-300 transition-colors">1a</button>
+                    <button type="button" onclick="switchTab('1b')" id="btn-1b" class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium bg-white text-gray-700 border-t border-b border-gray-200 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-300 transition-colors">1b</button>
+                    <button type="button" onclick="switchTab('1c')" id="btn-1c" class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-300 transition-colors">1c</button>
+                    <button type="button" onclick="switchTab('1d')" id="btn-1d" class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium bg-white text-gray-700 border-t border-b border-r border-gray-200 rounded-r-lg hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-300 transition-colors">1d</button>
+                </div>
+                
+                <div class="flex items-center gap-4 text-sm font-medium text-gray-600">
+                    <!-- 資料高亮 Switch -->
+                    <label class="flex items-center cursor-pointer">
+                        <div class="relative">
+                            <input type="checkbox" id="hl-toggle" class="sr-only" checked onchange="toggleSourceHl()">
+                            <div class="block bg-gray-200 w-10 h-6 rounded-full transition-colors" id="hl-bg"></div>
+                            <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform transform translate-x-4 shadow" id="hl-dot"></div>
+                        </div>
+                        <div class="ml-2 flex items-center gap-1">
+                            <i class="fa-solid fa-highlighter text-yellow-500"></i> 動態高亮
+                        </div>
+                    </label>
+
+                    <!-- 三色筆 Switch -->
+                    <label class="flex items-center cursor-pointer">
+                        <div class="relative">
+                            <input type="checkbox" id="pen-toggle" class="sr-only" checked onchange="togglePenMode()">
+                            <div class="block bg-gray-200 w-10 h-6 rounded-full transition-colors" id="pen-bg"></div>
+                            <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform transform translate-x-4 shadow" id="pen-dot"></div>
+                        </div>
+                        <div class="ml-2 flex items-center gap-1">
+                            <i class="fa-solid fa-pen-nib text-blue-500"></i> 三色筆解析
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 題目區塊 1a -->
+            <div id="panel-1a" class="bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6 transition-opacity duration-300">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-lg font-bold text-gray-800 flex items-center">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md mr-3">1a</span>
+                        選擇題
+                    </h2>
+                    <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-xs font-bold">(1分)</span>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm md:text-base text-gray-800">
+                    根據資料A，以下哪項／些陳述是正確的？<br><br>
+                    (1) 「種草」是指增加商品的庫存數量。<br>
+                    (2) 消費者透過分享促進銷售，形成新商業模式。<br>
+                    (3) 在「種草經濟」中，消費者只是被動消費。<br>
+                    (4) 社交網絡和網上平台對「種草經濟」的發展沒有影響。
+                </div>
+
+                <div id="reveal-btn-1a" class="flex justify-center py-4">
+                    <button onclick="revealAns('1a')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold py-2 px-6 border border-blue-200 rounded-full shadow-sm transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-yellow-500"></i> 我已思考完畢，查看正確答案與解析
+                    </button>
+                </div>
+
+                <div id="ans-1a" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="border-2 border-red-400 bg-red-50/50 text-red-800 rounded-xl p-3 flex items-start gap-3">
+                            <i class="fa-solid fa-xmark text-red-500 mt-1"></i>
+                            <div>
+                                <span class="font-bold">A. 只有(2)</span>
+                                <p class="text-xs mt-1 text-red-700">正確答案，見下方綠框。</p>
+                            </div>
+                        </div>
+                        <div class="border-2 border-green-500 bg-green-50/50 text-green-800 rounded-xl p-3 flex items-start gap-3 relative shadow-sm">
+                            <div class="absolute -top-3 -right-3 bg-green-500 text-white rounded-full p-1 shadow"><i class="fa-solid fa-check"></i></div>
+                            <i class="fa-solid fa-check text-green-600 mt-1"></i>
+                            <div>
+                                <span class="font-bold">A. 只有(2)</span> <!-- 修正為正確呈現，因題目原本正確選項就是 A -->
+                                <p class="text-xs mt-1 text-green-700">資料A指出「種草經濟」下是「人找貨」，網民透過平台分享使用感受刺激他人消費，形成創新商業模式，故(2)正確。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-sm">
+                        <p class="font-bold mb-1 text-gray-700"><i class="fa-solid fa-list-check mr-2"></i>選項排誤：</p>
+                        <ul class="space-y-1 text-gray-600">
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i>(1) 錯誤：傳統業態才是「先有庫存」。</li>
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i>(3) 錯誤：消費者是「主動了解產品資訊」。</li>
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i>(4) 錯誤：「種草經濟」正正是依賴各類網上平台與網絡潮語發展。</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl mt-4">
+                        <h4 class="font-bold text-amber-900 text-sm flex items-center mb-2"><i class="fa-solid fa-magnifying-glass mr-2"></i>核心概念：互聯網經濟與消費模式轉變</h4>
+                        <p class="text-amber-800 text-xs">此題考核學生能否準確解讀新經濟模式（種草經濟）的特徵，理解互聯網如何改變傳統「貨找人」的被動消費，轉化為「人找貨」的主動資訊分享模式。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 題目區塊 1b -->
+            <div id="panel-1b" class="hidden bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6 transition-opacity duration-300">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-lg font-bold text-gray-800 flex items-center">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md mr-3">1b</span>
+                        資料描述題
+                    </h2>
+                    <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-xs font-bold">(2分)</span>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm md:text-base text-gray-800">
+                    根據資料B，就《小紅書文旅種草指南》出行趨勢，描述一個現象。
+                </div>
+
+                <div id="reveal-btn-1b" class="flex justify-center py-4">
+                    <button onclick="revealAns('1b')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold py-2 px-6 border border-blue-200 rounded-full shadow-sm transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-yellow-500"></i> 我已思考完畢，查看正確答案與解析
+                    </button>
+                </div>
+
+                <div id="ans-1b" class="hidden space-y-4">
+                    <div class="bg-gray-800 text-white text-xs px-3 py-1.5 rounded-t-lg font-bold flex gap-4">
+                        <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-blue-500 inline-block mr-1"></span>主題句</span>
+                        <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-gray-400 inline-block mr-1"></span>引用資料</span>
+                        <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-green-500 inline-block mr-1"></span>推論解釋</span>
+                    </div>
+                    <div class="border border-dashed border-gray-300 bg-slate-50/50 rounded-b-xl rounded-tr-xl p-5 text-sm leading-loose">
+                        <span class="ans-topic">現象表現為人們對於休閒、文化等高水平非物質生活的追求。</span>
+                        <span class="ans-source pair-purple">資料B顯示，話題「#周末去哪兒」的瀏覽量高達198億，其餘「#徒步路線推薦」、「#Citywalk」和「#人文掃街」都與旅行、探索和文化相關。</span>
+                        <span class="ans-explain">這顯示了人們對於休閑及旅行經驗的高度關注，將旅行作為一種豐富生活、享受文化體驗的重要方式，反映了人們對於非物質生活的追求。</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                            <h4 class="font-bold text-amber-900 text-sm flex items-center mb-2"><i class="fa-solid fa-star mr-2"></i>評分準則 (2分)</h4>
+                            <ul class="text-amber-800 text-xs space-y-1 list-disc pl-4">
+                                <li>能適當及全面地運用資料B的數據。</li>
+                                <li>能準確歸納數據背後的現象（非物質生活/文化探索的追求）。</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl">
+                            <h4 class="font-bold text-blue-900 text-sm flex items-center mb-2"><i class="fa-solid fa-rocket mr-2"></i>延伸預測</h4>
+                            <p class="text-blue-800 text-xs">數據題常要求將表面數字轉化為深層社會概念。溫習時應注意「物質生活」與「非物質生活」的區別，以及大眾消費模式轉向體驗經濟的趨勢。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 題目區塊 1c -->
+            <div id="panel-1c" class="hidden bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6 transition-opacity duration-300">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-lg font-bold text-gray-800 flex items-center">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md mr-3">1c</span>
+                        資料論證題
+                    </h2>
+                    <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-xs font-bold">(6分)</span>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm md:text-base text-gray-800 font-medium">
+                    「『種草經濟』的發展反映了中國人民生活素質的轉變與提升。」參考資料及就你所知，解釋這個看法。
+                </div>
+
+                <div id="reveal-btn-1c" class="flex justify-center py-4">
+                    <button onclick="revealAns('1c')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold py-2 px-6 border border-blue-200 rounded-full shadow-sm transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-yellow-500"></i> 我已思考完畢，查看範文與解析
+                    </button>
+                </div>
+
+                <div id="ans-1c" class="hidden space-y-4">
+                    <div class="bg-gray-800 text-white text-xs px-3 py-1.5 rounded-t-lg font-bold flex gap-4">
+                        <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-blue-500 inline-block mr-1"></span>主題句</span>
+                        <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-gray-400 inline-block mr-1"></span>引用資料</span>
+                        <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-green-500 inline-block mr-1"></span>推論解釋</span>
+                    </div>
+                    
+                    <div class="space-y-4 border border-dashed border-gray-300 bg-slate-50/50 rounded-b-xl rounded-tr-xl p-5 text-sm leading-loose">
+                        <!-- 段落一 -->
+                        <div class="pb-3 border-b border-gray-200">
+                            <span class="ans-topic">首先，「種草經濟」的發展代表了經濟收入的增加，從而反映了中國人民物質生活的提升。</span>
+                            <span class="ans-source pair-amber">資料C顯示，2021年全年全國居民人均可支配收入為35128元，扣除價格因素後，實際增長了8.1%。消費者會模仿網紅的生活方式，包括購置同款商品。</span>
+                            <span class="ans-explain">這顯示隨着中國經濟發展，中產階級和年輕一代的可支配收入增加，消費者在網紅推廣和影響下，帶動了消費行為。這顯示了市場的活力和購買力增強，也反映了市民有能力購買更多優質商品，物質生活素質提升。</span>
+                        </div>
+                        <!-- 段落二 -->
+                        <div class="pt-2">
+                            <span class="ans-topic">其次，「種草經濟」的發展代表消費模式改變，從而反映了中國人民更多利用網絡購物及吸收訊息的生活習慣。</span>
+                            <span class="ans-source pair-teal">資料A顯示，「種草經濟」指的是網民通過網上平台與他人分享產品的使用感受，從而激發他人對某商品的購買欲望。</span>而<span class="ans-source pair-rose">資料C顯示線上渠道已成為中國消費的重要陣地。</span>
+                            <span class="ans-explain">隨着網絡平台的興起，網上購物已然成為人們生活的消費習慣。此外，消費者如今的決策更受到社交媒體內容影響，例如小紅書、抖音、微博上的推薦，從而產生消費行為，進一步反映了人們更多利用網絡購物及吸收訊息的生活習慣轉變。</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                            <h4 class="font-bold text-amber-900 text-sm flex items-center mb-2"><i class="fa-solid fa-list-check mr-2"></i>核心評分標準 (6分)</h4>
+                            <ul class="text-amber-800 text-xs space-y-1 list-disc pl-4">
+                                <li>能清楚解釋「種草經濟」的發展如何反映人民生活素質的轉變與提升。</li>
+                                <li>能理解及恰當運用有關知識（如：生活素質、消費模式、物質/非物質生活等）。</li>
+                                <li>能適當運用資料（如資料A的平台分享、資料C的收入數據）。</li>
+                                <li>答案結構嚴謹，表達清楚且深入。</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl">
+                            <h4 class="font-bold text-blue-900 text-sm flex items-center mb-2"><i class="fa-solid fa-book-open-reader mr-2"></i>延伸溫習方向</h4>
+                            <p class="text-blue-800 text-xs">「生活素質」是公民科必考核心概念。除了經濟層面（物質），同學必須能靈活舉出「非物質」層面的例子（如休閒娛樂、城市探索、環保意識等）。了解中國數字經濟（如電商、直播帶貨）對社會民生的雙面影響是DSE熱門考法。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 題目區塊 1d -->
+            <div id="panel-1d" class="hidden bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6 transition-opacity duration-300">
+                <div class="flex justify-between items-start">
+                    <h2 class="text-lg font-bold text-gray-800 flex items-center">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md mr-3">1d</span>
+                        例子說明題 (就你所知)
+                    </h2>
+                    <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-xs font-bold">(3分)</span>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm md:text-base text-gray-800">
+                    除『種草經濟』外，以下兩個範疇亦能展現中國人民生活素質的轉變與提升：<br>
+                    i 教育<br>
+                    ii 醫療<br><br>
+                    從這兩個範疇任選一個，就你所知，以例子說明該範疇如何展現人民生活素質的轉變與提升。
+                </div>
+
+                <div id="reveal-btn-1d" class="flex justify-center py-4">
+                    <button onclick="revealAns('1d')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold py-2 px-6 border border-blue-200 rounded-full shadow-sm transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-yellow-500"></i> 我已思考完畢，查看範文與解析
+                    </button>
+                </div>
+
+                <div id="ans-1d" class="hidden space-y-4">
+                    <div class="bg-gray-800 text-white text-xs px-3 py-1.5 rounded-t-lg font-bold flex gap-4">
+                        <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-blue-500 inline-block mr-1"></span>主題句</span>
+                        <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-gray-400 inline-block mr-1"></span>個人知識 (就你所知)</span>
+                        <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-green-500 inline-block mr-1"></span>推論解釋</span>
+                    </div>
+                    
+                    <div class="space-y-4 border border-dashed border-gray-300 bg-slate-50/50 rounded-b-xl rounded-tr-xl p-5 text-sm leading-loose relative">
+                        <span class="absolute top-2 right-2 bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded font-bold">範例：選擇 (ii) 醫療</span>
+                        <div class="mt-4">
+                            <span class="ans-topic">中國不斷加大對醫療領域的資源投入，其在醫療體系的發展亦展現人民健康水平及預期壽命的提升。</span>
+                            <span class="ans-source pair-blue">根據「十四五」規劃，中國致力建立更加完善的全民醫療保障制度。截至目前，已有13.6億人參加基本醫保，參保率穩定在95%以上，建成全球規模最大的社會保障體系。</span>
+                            <span class="ans-explain">隨着政府資源投放增加，中國的藥物研發能力和疾病防控水平亦持續提升，有效減輕了人民的醫療負擔，提高了整體健康水平與生活素質。</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                            <h4 class="font-bold text-amber-900 text-sm flex items-center mb-2"><i class="fa-solid fa-list-check mr-2"></i>核心概念</h4>
+                            <p class="text-amber-800 text-xs">此題要求「就你所知」作答，考驗學生對國情的基本認識。必須能具體提出國家政策（如「十四五」規劃）或客觀事實（如全民醫保、義務教育普及化），而非流於空泛的吹捧。</p>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl">
+                            <h4 class="font-bold text-blue-900 text-sm flex items-center mb-2"><i class="fa-solid fa-rocket mr-2"></i>延伸預測</h4>
+                            <p class="text-blue-800 text-xs">「改革開放以來的國家」主題中，除了經濟成就，國家在「脫貧攻堅」、「基礎建設（如高鐵）」、「航天科技」以及「醫療教育」等民生領域的成就都是重點溫習課題。建議熟記1-2個具體數據旁身。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-900 text-gray-400 py-4 border-t border-gray-800 text-center text-xs mt-auto">
+        <p>三色筆題解可視化 Web App &copy; 2026 | 公民與社會發展科互動學習平台</p>
+    </footer>
+
+    <script>
+        // 初始化狀態
+        let currentTab = '1a';
+        let ansRevealed = {
+            '1a': false, '1b': false, '1c': false, '1d': false
+        };
+
+        // 切換題目
+        function switchTab(tabId) {
+            // 隱藏所有 panel
+            document.querySelectorAll('[id^="panel-"]').forEach(el => el.classList.add('hidden'));
+            // 重置所有按鈕樣式
+            document.querySelectorAll('[id^="btn-"]').forEach(el => {
+                el.classList.remove('bg-blue-600', 'text-white');
+                el.classList.add('bg-white', 'text-gray-700');
+            });
+
+            // 顯示目標 panel
+            document.getElementById('panel-' + tabId).classList.remove('hidden');
+            // 設置目標按鈕樣式
+            let activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('bg-white', 'text-gray-700');
+            activeBtn.classList.add('bg-blue-600', 'text-white');
+
+            currentTab = tabId;
+            updateSourceHighlightState();
+        }
+
+        // 顯示答案
+        function revealAns(tabId) {
+            document.getElementById('reveal-btn-' + tabId).classList.add('hidden');
+            document.getElementById('ans-' + tabId).classList.remove('hidden');
+            ansRevealed[tabId] = true;
+            updateSourceHighlightState();
+        }
+
+        // 動態高亮核心邏輯
+        function updateSourceHighlightState() {
+            // 1. 清除 body 上所有舊的 hl-active- 類別
+            document.body.className = document.body.className.replace(/\bhl-active-[^\s]+\b/g, '');
+            // 2. 清除資料卡片的發光效果
+            document.querySelectorAll('[id^="source-"]').forEach(el => el.classList.remove('source-card-highlight'));
+
+            // 3. 如果當前題目的答案已揭曉，才啟用高亮
+            if (ansRevealed[currentTab]) {
+                document.body.classList.add('hl-active-' + currentTab);
+                
+                // 根據題目點亮對應的資料卡片
+                if (currentTab === '1b') {
+                    document.getElementById('source-B').classList.add('source-card-highlight');
+                } else if (currentTab === '1c') {
+                    document.getElementById('source-A').classList.add('source-card-highlight');
+                    document.getElementById('source-C').classList.add('source-card-highlight');
+                }
+                // 1a, 1d 若無直接文本配對高亮，可不加卡片外框發光
+            }
+        }
+
+        // 切換三色筆模式
+        function togglePenMode() {
+            const isChecked = document.getElementById('pen-toggle').checked;
+            if (isChecked) {
+                document.body.classList.add('pen-mode-active');
+                document.getElementById('pen-bg').classList.add('bg-gradient-to-r', 'from-blue-600', 'to-green-600');
+                document.getElementById('pen-bg').classList.remove('bg-gray-200');
+                document.getElementById('pen-dot').style.transform = 'translateX(100%)';
+            } else {
+                document.body.classList.remove('pen-mode-active');
+                document.getElementById('pen-bg').classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-green-600');
+                document.getElementById('pen-bg').classList.add('bg-gray-200');
+                document.getElementById('pen-dot').style.transform = 'translateX(0)';
+            }
+        }
+
+        // 切換資料高亮模式
+        function toggleSourceHl() {
+            const isChecked = document.getElementById('hl-toggle').checked;
+            if (isChecked) {
+                document.body.classList.add('source-hl-active');
+                document.getElementById('hl-bg').classList.add('bg-gradient-to-r', 'from-yellow-400', 'to-orange-500');
+                document.getElementById('hl-bg').classList.remove('bg-gray-200');
+                document.getElementById('hl-dot').style.transform = 'translateX(100%)';
+            } else {
+                document.body.classList.remove('source-hl-active');
+                document.getElementById('hl-bg').classList.remove('bg-gradient-to-r', 'from-yellow-400', 'to-orange-500');
+                document.getElementById('hl-bg').classList.add('bg-gray-200');
+                document.getElementById('hl-dot').style.transform = 'translateX(0)';
+            }
+        }
+
+        // 頁面載入初始化 UI 開關狀態
+        window.onload = function() {
+            // 初始化 Toggle UI 狀態
+            document.getElementById('pen-bg').classList.add('bg-gradient-to-r', 'from-blue-600', 'to-green-600');
+            document.getElementById('pen-dot').style.transform = 'translateX(100%)';
+            
+            document.getElementById('hl-bg').classList.add('bg-gradient-to-r', 'from-yellow-400', 'to-orange-500');
+            document.getElementById('hl-dot').style.transform = 'translateX(100%)';
+        };
+    </script>
+</body>
+</html>
