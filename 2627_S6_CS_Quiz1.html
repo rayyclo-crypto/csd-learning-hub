@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-2027 中六 公民科測驗1 - 惜食減廢與可持續發展</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        
+        /* 三色筆模式 */
+        .pen-mode-active .ans-topic { color: #2563eb; font-weight: 700; } /* Blue */
+        .pen-mode-active .ans-source { font-weight: 700; color: #1f2937; } /* Black but bold */
+        .pen-mode-active .ans-explain { color: #16a34a; font-weight: 700; } /* Green */
+        
+        /* 動態資料高亮 - 只有在 body 具備對應 hl-active-[id] 且 source-hl-active 時才啟動 */
+        /* Q1 */
+        .source-hl-active.hl-active-1 .pair-q1 { background-color: #fef08a; padding: 2px 4px; border-radius: 4px; transition: all 0.3s;}
+        .source-hl-active.hl-active-1 .ans-source.pair-q1 { background-color: #fef08a; padding: 0 4px; border-radius: 4px;}
+        
+        /* Q2 */
+        .source-hl-active.hl-active-2 .pair-amber { background-color: #fde68a; padding: 2px 4px; border-radius: 4px; transition: all 0.3s;}
+        .source-hl-active.hl-active-2 .pair-purple { background-color: #e9d5ff; padding: 2px 4px; border-radius: 4px; transition: all 0.3s;}
+        .source-hl-active.hl-active-2 .ans-source.pair-amber { background-color: #fde68a; padding: 0 4px; border-radius: 4px;}
+        .source-hl-active.hl-active-2 .ans-source.pair-purple { background-color: #e9d5ff; padding: 0 4px; border-radius: 4px;}
+        
+        /* Q3 無直接資料引用，純就我所知，略過資料側高亮 */
+        
+        /* Q4 */
+        .source-hl-active.hl-active-4 .pair-teal { background-color: #ccfbf1; padding: 2px 4px; border-radius: 4px; transition: all 0.3s;}
+        .source-hl-active.hl-active-4 .pair-rose { background-color: #fecdd3; padding: 2px 4px; border-radius: 4px; transition: all 0.3s;}
+        .source-hl-active.hl-active-4 .pair-emerald { background-color: #a7f3d0; padding: 2px 4px; border-radius: 4px; transition: all 0.3s;}
+        .source-hl-active.hl-active-4 .ans-source.pair-teal { background-color: #ccfbf1; padding: 0 4px; border-radius: 4px;}
+        .source-hl-active.hl-active-4 .ans-source.pair-rose { background-color: #fecdd3; padding: 0 4px; border-radius: 4px;}
+        .source-hl-active.hl-active-4 .ans-source.pair-emerald { background-color: #a7f3d0; padding: 0 4px; border-radius: 4px;}
+        
+        /* 資料卡片發光效果 */
+        .source-card-highlight { border-color: #60a5fa !important; box-shadow: 0 0 10px rgba(96, 165, 250, 0.3); }
+
+        /* Switch 樣式 */
+        .toggle-checkbox:checked { right: 0; border-color: #68D391; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #68D391; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col pen-mode-active source-hl-active">
+
+    <!-- 頂部頁頭 (Header) -->
+    <header class="bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] border-b-4 border-blue-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-left w-full md:w-2/3">
+                <span class="bg-yellow-400 text-blue-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider inline-block mb-2">#資料回應題 #可持續發展 #ESG</span>
+                <h1 class="text-2xl font-bold text-white mt-1">S6 測驗1 (課題3 可持續發展) - 惜食減廢與綠色經濟</h1>
+                <p class="text-blue-100 text-sm mt-2"><i class="fa-solid fa-school mr-1"></i>中華基督教會燕京書院 | 中六 公民與社會發展科[cite: 1]</p>
+            </div>
+            <div class="w-full md:w-1/3">
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-3 text-right text-xs text-white">
+                    <p class="mb-1"><i class="fa-regular fa-calendar-days mr-1"></i> 日期：2026-09-23</p>
+                    <p class="mb-1"><i class="fa-solid fa-stopwatch mr-1"></i> 主題三：互聯相依的當代世界[cite: 1]</p>
+                    <p class="font-bold text-yellow-300"><i class="fa-solid fa-star mr-1"></i> 總分：13分</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 佈局架構 (Layout) -->
+    <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6 w-full flex-grow">
+        
+        <!-- 左側欄位設計 (Col-span-5)：資料冊 -->
+        <div class="lg:col-span-5">
+            <div class="sticky top-6 bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden" id="source-container">
+                <div class="bg-gray-800 text-white px-4 py-3 flex justify-between items-center">
+                    <h2 class="font-bold text-sm"><i class="fa-solid fa-book-open mr-2"></i>資料冊</h2>
+                    <span class="bg-gray-700 text-xs px-2 py-0.5 rounded shadow-inner">共 3 則</span>
+                </div>
+                <div class="max-h-[calc(100vh-160px)] overflow-y-auto p-4 space-y-4">
+                    
+                    <!-- 資料 A -->
+                    <div class="bg-slate-50 border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all source-card" id="card-A">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded">資料 A</span>
+                            <span class="text-xs text-gray-500 ml-2">取材自2023年9月的食物安全通訊</span>
+                        </div>
+                        <p class="text-sm leading-relaxed text-gray-700">
+                            本港目前設有食物銀行和社區廚房等食物回收計劃，一般由非政府機構營辦，向有需要人士提供食物援助，也有助減少廚餘。<span class="pair-teal"><span class="pair-q1">食物銀行和食物貯藏室收集並再分發捐贈的食物</span></span>，而社區廚房則通常會參與食物加工過程，例如處理、翻熱和烹煮。[cite: 1]
+                        </p>
+                    </div>
+
+                    <!-- 資料 B -->
+                    <div class="bg-slate-50 border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all source-card" id="card-B">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-cyan-500 text-white text-xs font-bold px-2 py-0.5 rounded">資料 B</span>
+                            <span class="text-xs text-gray-500 ml-2">取材自2024年7月的報章報道</span>
+                        </div>
+                        <p class="text-sm leading-relaxed text-gray-700">
+                            不少人或會問，過期食物還能吃嗎？事實上，早年有見惜食文化興起，食安中心亦曾指出，「此日期前最佳」關乎「食物質素」，如果加以適當儲存，食物過期後質素雖然未必最好，但可能還可進食；至於化粧品、洗髮水、防曬用品等在過期後仍可使用，可能是在功效上略有減弱。[cite: 1]
+                        </p>
+                        <p class="text-sm leading-relaxed text-gray-700 mt-2">
+                            <span class="pair-amber">社會愈來愈重視環保、企業愈來愈重視ESG（環境、社會和治理），有社企瞄準本港市場缺口</span>，從環球各地搜羅<span class="pair-rose">臨近過期貨品及「過期貨」</span>，推廣零浪費理念，在零售界開拓別樹一幟的「綠惜」概念生意。據悉，該社企截至去年1月，已成功讓161萬份食品免於直接被丟棄的命運。[cite: 1]
+                        </p>
+                    </div>
+
+                    <!-- 資料 C -->
+                    <div class="bg-slate-50 border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all source-card" id="card-C">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-purple-500 text-white text-xs font-bold px-2 py-0.5 rounded">資料 C</span>
+                            <span class="text-xs text-gray-500 ml-2">取材自網上專題文章</span>
+                        </div>
+                        <p class="text-sm leading-relaxed text-gray-700">
+                            任何食物生產工序食物某些部份，如水果皮、蔬菜莖部等都免不了棄掉；而餐飲業賣不出的食物又會成為廚餘。以往這些被稱為「剩食」的東西，有部份可以用來堆肥，但<span class="pair-emerald">絕大部份不是送去堆填區就是焚化爐</span>。為對應這個問題，全球有不少企業家、科學家和設計師，也絞盡腦汁去進行研究及開發減廢的方法，甚至<span class="pair-purple">賦予食物垃圾第二生命，令它們升級成更具經濟價值的食品或更為有用的物料</span>，繼續服務人類。有沒有想過，賣剩的麵包可以釀酒？農作物廢料可以變成糖？沖完咖啡的咖啡渣更可以變成紡織用的紗？[cite: 1]
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 右側控制列與導航 (Col-span-7) -->
+        <div class="lg:col-span-7 flex flex-col gap-4">
+            
+            <!-- 控制列 (Control Bar) -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4 sticky top-6 z-10">
+                <div class="inline-flex rounded-lg shadow-sm w-full sm:w-auto" role="group">
+                    <button type="button" onclick="switchTab(1)" id="btn-tab-1" class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium bg-blue-600 text-white border border-gray-200 rounded-l-lg hover:bg-blue-700 transition-colors">題 1 (MC)</button>
+                    <button type="button" onclick="switchTab(2)" id="btn-tab-2" class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium bg-white text-gray-700 border-t border-b border-r border-gray-200 hover:bg-gray-50 transition-colors">題 2 (2分)</button>
+                    <button type="button" onclick="switchTab(3)" id="btn-tab-3" class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium bg-white text-gray-700 border-t border-b border-r border-gray-200 hover:bg-gray-50 transition-colors">題 3 (4分)</button>
+                    <button type="button" onclick="switchTab(4)" id="btn-tab-4" class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium bg-white text-gray-700 border-t border-b border-r border-gray-200 rounded-r-lg hover:bg-gray-50 transition-colors">題 4 (6分)</button>
+                </div>
+                
+                <div class="flex flex-col gap-2 w-full sm:w-auto text-xs font-bold text-gray-600">
+                    <label class="flex items-center cursor-pointer justify-end gap-2">
+                        <span class="select-none">三色筆解析</span>
+                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="togglePen" id="togglePen" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10" checked onclick="togglePenMode()"/>
+                            <label for="togglePen" class="toggle-label block overflow-hidden h-5 rounded-full bg-gradient-to-r from-blue-600 to-green-600 cursor-pointer shadow-inner"></label>
+                        </div>
+                    </label>
+                    <label class="flex items-center cursor-pointer justify-end gap-2">
+                        <span class="select-none">資料對照高亮</span>
+                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggleHl" id="toggleHl" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10" checked onclick="toggleSourceHl()"/>
+                            <label for="toggleHl" class="toggle-label block overflow-hidden h-5 rounded-full bg-gradient-to-r from-amber-400 to-rose-400 cursor-pointer shadow-inner"></label>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 題目與答案工作區 (Workspace Panel) -->
+            
+            <!-- 題 1 Panel -->
+            <div id="panel-1" class="bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6 tab-panel block">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md font-bold">Q1</span>
+                        <h3 class="font-bold text-lg text-gray-800">多項選擇題</h3>
+                    </div>
+                    <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-xs font-bold">滿分：1分</span>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm">
+                    <p class="font-medium text-base mb-3">根據資料A，以下哪項/些陳述是正確的？[cite: 1]</p>
+                    <ol class="list-none space-y-1 mb-4 text-gray-700 ml-2">
+                        <li>(1) 可食用食物在處置過程中應該被丟棄。[cite: 1]</li>
+                        <li>(2) 食物銀行負責可食用食物的重新分配。[cite: 1]</li>
+                        <li>(3) 社區廚房負責確保食物的安全質素。[cite: 1]</li>
+                        <li>(4) 食物回收無助減少食物浪費。[cite: 1]</li>
+                    </ol>
+                    <ul class="list-none space-y-2">
+                        <li class="border-2 border-gray-200 rounded-xl p-3 bg-white">A. 只有(2)</li>
+                        <li class="border-2 border-gray-200 rounded-xl p-3 bg-white">B. 只有(4)</li>
+                        <li class="border-2 border-gray-200 rounded-xl p-3 bg-white">C. 只有(1)及(2)</li>
+                        <li class="border-2 border-gray-200 rounded-xl p-3 bg-white">D. 只有(3)及(4)</li>
+                    </ul>
+                </div>
+                
+                <div id="reveal-btn-1" class="text-center py-4">
+                    <button onclick="revealAns(1)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-full shadow-md transition-transform transform hover:scale-105">我已思考完畢，查看正確答案與解析</button>
+                </div>
+
+                <div id="ans-1" class="hidden space-y-6">
+                    <div class="bg-green-50/50 border-2 border-green-500 rounded-xl p-4">
+                        <h4 class="text-green-800 font-bold mb-3 flex items-center"><i class="fa-solid fa-circle-check mr-2"></i>正確答案：A. 只有(2)</h4>
+                        <div class="space-y-3 text-sm">
+                            <p class="flex items-start"><i class="fa-solid fa-xmark text-red-500 mt-1 mr-2"></i><span class="text-gray-700"><strong>(1) 錯誤：</strong>資料A指出食物回收計劃將食物提供給有需要人士，而非處置過程中直接丟棄。[cite: 2]</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-check text-green-600 mt-1 mr-2"></i><span class="text-gray-700"><strong>(2) 正確：</strong><span class="ans-source pair-q1">資料A明確提及「食物銀行和食物貯藏室收集並再分發捐贈的食物」</span>，此即為可食用食物的重新分配。[cite: 2]</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-xmark text-red-500 mt-1 mr-2"></i><span class="text-gray-700"><strong>(3) 錯誤：</strong>資料A僅指社區廚房「參與食物加工過程，例如處理、翻熱和烹煮」，未提及負責確保食物安全質素。[cite: 2]</span></p>
+                            <p class="flex items-start"><i class="fa-solid fa-xmark text-red-500 mt-1 mr-2"></i><span class="text-gray-700"><strong>(4) 錯誤：</strong>資料A說明食物回收「也有助減少廚餘」，能有效減少食物浪費。[cite: 2]</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-amber-50 rounded-lg p-4 border border-amber-200 flex items-start gap-3">
+                        <div class="text-amber-500 text-xl mt-1"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        <div>
+                            <h4 class="font-bold text-amber-900 text-sm mb-1">核心概念</h4>
+                            <p class="text-xs text-amber-800 leading-relaxed">考核對「食物回收」機制的理解。學生需仔細分辨不同非政府組織（食物銀行 vs 社區廚房）在整個回收與分發鏈條上的具體角色與功能。[cite: 1, 2]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 題 2 Panel -->
+            <div id="panel-2" class="bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6 tab-panel hidden">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md font-bold">Q2</span>
+                        <h3 class="font-bold text-lg text-gray-800">原因指出題</h3>
+                    </div>
+                    <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-xs font-bold">滿分：2分</span>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm">
+                    <p class="font-medium text-base">參考資料B及C，指出及說明企業開拓「綠惜」概念生意的一個原因。[cite: 1]</p>
+                </div>
+                
+                <div id="reveal-btn-2" class="text-center py-4">
+                    <button onclick="revealAns(2)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-full shadow-md transition-transform transform hover:scale-105">我已思考完畢，查看正確答案與解析</button>
+                </div>
+
+                <div id="ans-2" class="hidden space-y-6">
+                    <div class="flex items-center justify-end text-xs mb-2 bg-gray-50 p-2 rounded-lg border border-gray-200 inline-block">
+                        <span class="font-bold mr-2 text-gray-500">三色筆圖例：</span>
+                        <span class="text-blue-600 font-bold mx-2">■ 主題句</span>
+                        <span class="text-gray-800 font-bold mx-2">■ 引用資料</span>
+                        <span class="text-green-600 font-bold mx-2">■ 推論解釋</span>
+                    </div>
+
+                    <div class="border border-dashed border-gray-200 bg-slate-50/50 rounded-xl p-5">
+                        <p class="mb-3 leading-loose"><span class="ans-topic">企業開拓「綠惜」概念生意的一個核心原因是為了瞄準 ESG 環保市場缺口以獲取商業利潤，並提升資源利用價值。[cite: 2]</span></p>
+                        <p class="leading-loose"><span class="ans-explain">隨着可持續發展理念普及，</span><span class="ans-source pair-amber">資料B指出社會與企業日益重視 ESG 和環保，且本港存在市場缺口。[cite: 2]</span><span class="ans-explain">此外，透過創新介入，</span><span class="ans-source pair-purple">資料C顯示企業能把食物垃圾「升級再造」（如賣剩麵包釀酒），轉化成具經濟價值的產品。[cite: 2]</span><span class="ans-explain">因此，企業透過銷售臨期貨或剩食再造，既能開闢獨特市場滿足大眾的環保需求，又能賦予廢物第二生命，達致商業利益與環境保育雙贏。[cite: 2]</span></p>
+                    </div>
+                    
+                    <div class="bg-amber-50 rounded-lg p-4 border border-amber-200 flex items-start gap-3">
+                        <div class="text-amber-500 text-xl mt-1"><i class="fa-solid fa-list-check"></i></div>
+                        <div>
+                            <h4 class="font-bold text-amber-900 text-sm mb-1">評分標準解構</h4>
+                            <ul class="list-disc ml-4 text-xs text-amber-800 space-y-1">
+                                <li><strong>指出原因 [1分]：</strong> 清晰指出「瞄準 ESG 環保市場缺口」或「提升資源利用價值/獲取利潤」。[cite: 2]</li>
+                                <li><strong>資料運用及說明 [1分]：</strong> 能準確運用資料 B（重視 ESG/市場缺口）及資料 C（升級再造創造價值），並有條理地推論出商業與環保的雙重效益。[cite: 2]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 題 3 Panel -->
+            <div id="panel-3" class="bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6 tab-panel hidden">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md font-bold">Q3</span>
+                        <h3 class="font-bold text-lg text-gray-800">持份者建議題</h3>
+                    </div>
+                    <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-xs font-bold">滿分：4分</span>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm">
+                    <p class="font-medium text-base mb-2">除工商界外，以下三個持份者亦能有助推動「惜食減廢」的社會風氣：[cite: 1]</p>
+                    <p class="font-bold text-blue-800 ml-4 mb-2">i. 政府 &nbsp;&nbsp; ii. 非政府組織 &nbsp;&nbsp; iii. 教育界</p>
+                    <p class="font-medium text-base">從這三個持份者中任選兩個，說明他們可如何推動惜食減廢的社會風氣。[cite: 1]</p>
+                </div>
+                
+                <div id="reveal-btn-3" class="text-center py-4">
+                    <button onclick="revealAns(3)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-full shadow-md transition-transform transform hover:scale-105">我已思考完畢，查看正確答案與解析</button>
+                </div>
+
+                <div id="ans-3" class="hidden space-y-6">
+                    <div class="flex items-center justify-end text-xs mb-2 bg-gray-50 p-2 rounded-lg border border-gray-200 inline-block">
+                        <span class="font-bold mr-2 text-gray-500">三色筆圖例：</span>
+                        <span class="text-blue-600 font-bold mx-2">■ 主題句 (持份者)</span>
+                        <span class="text-gray-800 font-bold mx-2">■ 具體作法 (就你所知)</span>
+                        <span class="text-green-600 font-bold mx-2">■ 推論解釋 (成效)</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- 持份者：政府 -->
+                        <div class="border border-dashed border-gray-200 bg-slate-50/50 rounded-xl p-4">
+                            <p class="leading-loose"><span class="ans-topic">政府作為政策制定者，可透過立法規管與提供經濟誘因來推動減廢風氣。[cite: 2]</span><span class="ans-source text-indigo-700">具體而言，政府可推行固體廢物收費計劃，並於各區擴建廚餘回收基礎設施。[cite: 2]</span><span class="ans-explain">透過法例約束及經濟誘因，能直接改變市民與企業隨意棄置廚餘的習慣，從而在全社會營造重視減廢的氛圍。[cite: 2]</span></p>
+                        </div>
+                        
+                        <!-- 持份者：非政府組織 -->
+                        <div class="border border-dashed border-gray-200 bg-slate-50/50 rounded-xl p-4">
+                            <p class="leading-loose"><span class="ans-topic">非政府組織（NGO）作為社會服務提供者，能深入社區帶動基層參與。[cite: 2]</span><span class="ans-source text-indigo-700">它們可營辦食物銀行與社區廚房，回收過剩食物再分發，並舉辦社區宣傳講座。[cite: 2]</span><span class="ans-explain">此舉不僅能將臨期食品物盡其用，更能向大眾推廣珍惜食物的觀念，發揮連結各界別共同減廢的作用。[cite: 2]</span></p>
+                        </div>
+
+                        <!-- 持份者：教育界 (備用) -->
+                        <div class="border border-dashed border-gray-200 bg-slate-50/50 rounded-xl p-4 relative opacity-80 hover:opacity-100 transition-opacity">
+                            <div class="absolute -top-3 right-4 bg-gray-200 text-gray-600 text-[10px] px-2 py-0.5 rounded font-bold">備選參考</div>
+                            <p class="leading-loose"><span class="ans-topic">教育界作為培育下一代的搖籃，可透過學校課程與實踐活動建立環保習慣。[cite: 2]</span><span class="ans-source text-indigo-700">學校可將可持續發展概念納入常規課程，並舉辦「零廚餘校園」等學生實踐活動。[cite: 2]</span><span class="ans-explain">這能從小培養學生正面的價值觀，並透過「小手拉大手」的效應，將惜食風氣延伸至其家庭與社區。[cite: 2]</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-amber-50 rounded-lg p-4 border border-amber-200 flex items-start gap-3">
+                        <div class="text-amber-500 text-xl mt-1"><i class="fa-solid fa-layer-group"></i></div>
+                        <div>
+                            <h4 class="font-bold text-amber-900 text-sm mb-1">DSE 答題策略</h4>
+                            <p class="text-xs text-amber-800 leading-relaxed">這是一條典型的「持份者」題型。高分關鍵在於「作法與該持份者身份的匹配性」。寫政府必須提到政策/立法/公帑分配；寫NGO必須強調地區網絡與倡議；寫教育界必須圍繞課程與價值觀培養。每段結構必須是：<br><strong>指出持份者角色 ➔ 提出具體行動 ➔ 解釋行動如何影響社會風氣。[cite: 2]</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 題 4 Panel -->
+            <div id="panel-4" class="bg-white rounded-xl shadow-md border border-gray-200 p-6 space-y-6 tab-panel hidden">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md font-bold">Q4</span>
+                        <h3 class="font-bold text-lg text-gray-800">多角度論述題</h3>
+                    </div>
+                    <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-xs font-bold">滿分：6分</span>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm">
+                    <p class="font-medium text-base">為甚麼推動「惜食減廢」對促進可持續發展是重要的？參考所提供資料及就你所知，解釋你的答案。[cite: 1]</p>
+                </div>
+                
+                <div id="reveal-btn-4" class="text-center py-4">
+                    <button onclick="revealAns(4)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-full shadow-md transition-transform transform hover:scale-105">我已思考完畢，查看正確答案與解析</button>
+                </div>
+
+                <div id="ans-4" class="hidden space-y-6">
+                    <div class="flex items-center justify-end text-xs mb-2 bg-gray-50 p-2 rounded-lg border border-gray-200 inline-block">
+                        <span class="font-bold mr-2 text-gray-500">三色筆圖例：</span>
+                        <span class="text-blue-600 font-bold mx-2">■ 主題句 (可持續發展維度)</span>
+                        <span class="text-gray-800 font-bold mx-2">■ 引用資料</span>
+                        <span class="text-green-600 font-bold mx-2">■ 推論解釋</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- 環境維度 -->
+                        <div class="border border-dashed border-gray-200 bg-slate-50/50 rounded-xl p-4">
+                            <p class="leading-loose"><span class="ans-topic">首先，在環境維度上，推動惜食減廢能有效減輕自然環境的負荷。[cite: 2]</span><span class="ans-source pair-emerald">正如資料C指出，大部分剩食最終會被送往堆填區或焚化爐。[cite: 2]</span><span class="ans-explain">若社會能有效減少廚餘產生，便能直接減緩堆填區飽和的壓力，並降低有機廢物腐化時產生的溫室氣體排放，從而保護生態系統，維護環境的可持續性。[cite: 2]</span></p>
+                        </div>
+                        
+                        <!-- 經濟維度 -->
+                        <div class="border border-dashed border-gray-200 bg-slate-50/50 rounded-xl p-4">
+                            <p class="leading-loose"><span class="ans-topic">其次，在經濟維度上，惜食減廢有助提升資源效益並催生創新產業。[cite: 2]</span><span class="ans-source pair-rose">資料B提及社企搜羅臨近過期貨品銷售；</span><span class="ans-source pair-purple">資料C則指剩食可升級再造（如變紗線）。[cite: 2]</span><span class="ans-explain">透過這些循環經濟模式，不僅能減少因資源丟棄而造成的經濟損失，更能開拓新興的綠色市場，提升整體的經濟活力與資源運用效率。[cite: 2]</span></p>
+                        </div>
+
+                        <!-- 社會維度 -->
+                        <div class="border border-dashed border-gray-200 bg-slate-50/50 rounded-xl p-4">
+                            <p class="leading-loose"><span class="ans-topic">最後，在社會維度上，惜食能促進社會互助與世代公平。[cite: 2]</span><span class="ans-source pair-teal">資料A提及食物銀行可將收集的捐贈食物再分發。[cite: 2]</span><span class="ans-explain">這種資源再分配機制能直接援助基層貧困人口，促進社會和諧與團結；同時亦培育市民負責任的消費態度，確保後代享有充足自然資源的權利，體現世代公平原則。[cite: 2]</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 rounded-lg p-4 border border-blue-200 flex items-start gap-3 mt-4">
+                        <div class="text-blue-500 text-xl mt-1"><i class="fa-solid fa-rocket"></i></div>
+                        <div>
+                            <h4 class="font-bold text-blue-900 text-sm mb-1">延伸預測與溫習方向</h4>
+                            <p class="text-xs text-blue-800 leading-relaxed">「可持續發展」是DSE的絕對高頻考點。除了熟練運用**「環境、經濟、社會」三大維度分析框架**外，同學應多留意近期**「微塑膠管制」、「都市固體廢物收費爭議」**及**「新能源發展」**等時事議題，練習將全球性環保理念套用至香港本地政策情境中進行多角度正反論證。[cite: 3]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 頁腳 (Footer) -->
+    <footer class="bg-gray-900 text-gray-400 py-4 border-t border-gray-800 text-center text-xs mt-auto">
+        <p>&copy; 2026-2027 中學公民與社會發展科 互動題解學習系統. All Rights Reserved.</p>
+        <p class="mt-1 opacity-70">Generated for Educational Purpose | Theme 3: Interconnected Contemporary World</p>
+    </footer>
+
+    <!-- 互動邏輯腳本 -->
+    <script>
+        let currentTab = 1;
+        let isRevealed = { 1: false, 2: false, 3: false, 4: false };
+
+        function switchTab(tabId) {
+            // 隱藏所有面板
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.add('hidden');
+                panel.classList.remove('block');
+            });
+            // 顯示當前選中面板
+            document.getElementById('panel-' + tabId).classList.remove('hidden');
+            document.getElementById('panel-' + tabId).classList.add('block');
+
+            // 更新按鈕樣式
+            for(let i = 1; i <= 4; i++) {
+                let btn = document.getElementById('btn-tab-' + i);
+                if(i === tabId) {
+                    btn.className = btn.className.replace('bg-white text-gray-700', 'bg-blue-600 text-white').replace('hover:bg-gray-50', 'hover:bg-blue-700');
+                } else {
+                    btn.className = btn.className.replace('bg-blue-600 text-white', 'bg-white text-gray-700').replace('hover:bg-blue-700', 'hover:bg-gray-50');
+                }
+            }
+
+            currentTab = tabId;
+            updateSourceHighlightState();
+        }
+
+        function revealAns(tabId) {
+            document.getElementById('reveal-btn-' + tabId).classList.add('hidden');
+            document.getElementById('ans-' + tabId).classList.remove('hidden');
+            document.getElementById('ans-' + tabId).classList.add('block');
+            
+            isRevealed[tabId] = true;
+            updateSourceHighlightState();
+        }
+
+        function togglePenMode() {
+            document.body.classList.toggle('pen-mode-active');
+        }
+
+        function toggleSourceHl() {
+            document.body.classList.toggle('source-hl-active');
+        }
+
+        function updateSourceHighlightState() {
+            // 1. 移除 body 上所有舊的 hl-active-[題號] class
+            document.body.classList.remove('hl-active-1', 'hl-active-2', 'hl-active-3', 'hl-active-4');
+            
+            // 2. 移除所有資料卡片的 source-card-highlight
+            document.querySelectorAll('.source-card').forEach(card => {
+                card.classList.remove('source-card-highlight');
+            });
+
+            // 3. 判斷當前題目是否已揭曉，若已揭曉才啟動高亮與發光
+            if (isRevealed[currentTab]) {
+                document.body.classList.add('hl-active-' + currentTab);
+                
+                // 為對應資料卡片加上發光特效
+                if(currentTab === 1) {
+                    document.getElementById('card-A').classList.add('source-card-highlight');
+                } else if(currentTab === 2) {
+                    document.getElementById('card-B').classList.add('source-card-highlight');
+                    document.getElementById('card-C').classList.add('source-card-highlight');
+                } else if(currentTab === 4) {
+                    document.getElementById('card-A').classList.add('source-card-highlight');
+                    document.getElementById('card-B').classList.add('source-card-highlight');
+                    document.getElementById('card-C').classList.add('source-card-highlight');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
