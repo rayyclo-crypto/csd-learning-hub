@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中華基督教會燕京書院 2026-2027 中六 測驗2 - 可持續發展與環境保育</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        
+        /* 三色筆模式 */
+        .pen-mode-active .ans-topic { color: #2563eb; font-weight: bold; } /* 藍色：主題句 */
+        .pen-mode-active .ans-source { color: #111827; text-decoration: underline; font-weight: 500; } /* 黑色：引用資料 */
+        .pen-mode-active .ans-explain { color: #16a34a; } /* 綠色：推論解釋 */
+        
+        /* 資料高亮模式 - 動態綁定題號 */
+        .pair-amber, .pair-teal, .pair-rose, .pair-purple { transition: background-color 0.3s ease; border-radius: 2px; }
+        
+        .source-hl-active.hl-active-q1i .pair-amber { background-color: #fde68a; box-shadow: 0 0 0 2px #fde68a; }
+        .source-hl-active.hl-active-q1ii .pair-teal { background-color: #99f6e4; box-shadow: 0 0 0 2px #99f6e4; }
+        .source-hl-active.hl-active-q1iii .pair-rose { background-color: #fecdd3; box-shadow: 0 0 0 2px #fecdd3; }
+        .source-hl-active.hl-active-q1iii .pair-purple { background-color: #e9d5ff; box-shadow: 0 0 0 2px #e9d5ff; }
+
+        /* 左側卡片發光效果 */
+        .source-card-highlight { border-color: #3b82f6 !important; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3) !important; }
+        
+        /* 隱藏未選中的標籤頁 */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        /* 答案區隱藏 */
+        .ans-content { display: none; }
+        .ans-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col source-hl-active pen-mode-active hl-active-qmc">
+
+    <!-- 頂部頁頭 -->
+    <header class="bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6] border-b-4 border-blue-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex-1">
+                <div class="flex flex-wrap gap-2 mb-2">
+                    <span class="bg-yellow-400 text-blue-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase">中六 測驗2</span>
+                    <span class="bg-blue-800/50 text-blue-100 text-xs font-medium px-2 py-1 rounded-full border border-blue-400/30">#可持續發展</span>
+                    <span class="bg-blue-800/50 text-blue-100 text-xs font-medium px-2 py-1 rounded-full border border-blue-400/30">#生態保育</span>
+                    <span class="bg-blue-800/50 text-blue-100 text-xs font-medium px-2 py-1 rounded-full border border-blue-400/30">#資料回應題</span>
+                </div>
+                <h1 class="text-2xl font-bold mt-1 text-white">中華基督教會燕京書院 - 互聯相依的當代世界：可持續發展</h1>
+                <p class="text-blue-100 text-sm mt-1">2026至2027年度 公民與社會發展科[cite: 2]</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-3 text-right text-xs text-white min-w-[150px]">
+                <div class="flex justify-between border-b border-white/20 pb-1 mb-1">
+                    <span class="opacity-80">總分：</span>
+                    <span class="font-bold text-yellow-300">11 分</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="opacity-80">主題：</span>
+                    <span class="font-medium">主題三[cite: 3]</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 佈局架構 -->
+    <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6 w-full flex-1">
+        
+        <!-- 左側欄位：資料冊 -->
+        <div class="lg:col-span-5 relative">
+            <div class="sticky top-6 bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden flex flex-col max-h-[calc(100vh-100px)]">
+                <div class="bg-gray-800 text-white px-4 py-3 flex justify-between items-center z-10">
+                    <div class="font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> 考卷資料冊
+                    </div>
+                    <span class="bg-gray-700 text-xs px-2 py-0.5 rounded">共 3 則資料</span>
+                </div>
+                
+                <div class="p-4 overflow-y-auto space-y-4 flex-1">
+                    <!-- 資料 A -->
+                    <div id="source-card-A" class="bg-slate-50 border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all relative">
+                        <div class="absolute -top-3 -left-2 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded shadow">資料 A</div>
+                        <p class="text-xs text-gray-500 mb-2 mt-1">取材自漁農自然護理署的宣傳海報及呼籲[cite: 2]</p>
+                        <div class="text-sm text-gray-700 leading-relaxed">
+                            <p>漁農及自然護理署發言人指，為保障動物福利，市民參與放生活動前必須謹慎思量，<span class="pair-teal">亦可考慮以其他善行代替放生活動，例如植樹或參與動物福利團體和環保組織的義工服務。</span></p>
+                        </div>
+                    </div>
+
+                    <!-- 資料 B -->
+                    <div id="source-card-B" class="bg-slate-50 border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all relative">
+                        <div class="absolute -top-3 -left-2 bg-cyan-600 text-white text-xs font-bold px-2 py-1 rounded shadow">資料 B</div>
+                        <p class="text-xs text-gray-500 mb-2 mt-1">取材自2021年9月立法會秘書處的資訊述要[cite: 2]</p>
+                        <div class="text-sm text-gray-700 leading-relaxed">
+                            <p>在香港，把動物放歸到野外的活動據稱頗為普遍，當中大多出於慈悲或宗教原因。香港現時大致上並不禁止放生動物活動，雖然漁農自然護理署就2014-2021年期間累計接獲16宗因不當放生而懷疑引致殘酷對待動物的投訴，惟迄今未曾作出任何檢控。</p>
+                            <p class="mt-2">政府建議修例，<span class="pair-rose">明確地把「不當將動物放到不合宜環境」列為殘酷對待動物的行為，並提高罰則。</span>有論者認為，單靠擴大殘酷對待動物的法定定義，不能防止不當的放生動物活動。放生動物前，<span class="pair-amber">依舊無須就物種及地點是否適合放生進行強制性評估，因此未能釋除對進口放生動物是否入侵物種，以及它們會否對本地生態系統構成潛在影響的疑慮。</span></p>
+                        </div>
+                    </div>
+
+                    <!-- 資料 C -->
+                    <div id="source-card-C" class="bg-slate-50 border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all relative">
+                        <div class="absolute -top-3 -left-2 bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded shadow">資料 C</div>
+                        <p class="text-xs text-gray-500 mb-2 mt-1">取材自2023年5月的政府新聞公報及漁農及自然護理署網站資訊[cite: 2]</p>
+                        <div class="text-sm text-gray-700 leading-relaxed">
+                            <p>政府計劃試驗<span class="pair-purple">透過推廣科學的增殖放流行動，以進一步減少傳統的放生行為。</span>漁農自然護理署將會邀請相關宗教團體和漁民團體，一同探討讓公眾參與由政府策劃及進行的增殖放流活動的可行性，並<span class="pair-purple">透過教育宣傳，令市民可以在指定的合適地點，恰當地放生可以增加漁業資源、改善海洋及河流環境的動物。</span></p>
+                            <p class="mt-2"><span class="pair-teal">在2019年的增殖放流行動中，漁農自然護理署在香港東北水域投放的幼魚包括紅斑及石蚌，均為具商業價值的本地物種。香港東北水域有適合紅斑及石蚌棲息的天然岩礁和巨礫，可為放流的幼魚提供合適的生境及保護。</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右側控制列與工作區 -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+            
+            <!-- 控制導航列 -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4 sticky top-6 z-20">
+                <div class="inline-flex rounded-lg shadow-sm w-full sm:w-auto overflow-x-auto">
+                    <button onclick="switchTab('qmc')" id="btn-qmc" class="tab-btn bg-blue-600 text-white text-sm font-medium px-4 py-2 border border-blue-600 rounded-l-lg hover:bg-blue-700 whitespace-nowrap">MC題 (1分)</button>
+                    <button onclick="switchTab('q1i')" id="btn-q1i" class="tab-btn bg-white text-gray-700 text-sm font-medium px-4 py-2 border-y border-r border-gray-200 hover:bg-gray-50 whitespace-nowrap">題 (i) (1分)</button>
+                    <button onclick="switchTab('q1ii')" id="btn-q1ii" class="tab-btn bg-white text-gray-700 text-sm font-medium px-4 py-2 border-y border-r border-gray-200 hover:bg-gray-50 whitespace-nowrap">題 (ii) (3分)</button>
+                    <button onclick="switchTab('q1iii')" id="btn-q1iii" class="tab-btn bg-white text-gray-700 text-sm font-medium px-4 py-2 border-y border-r border-gray-200 rounded-r-lg hover:bg-gray-50 whitespace-nowrap">題 (iii) (6分)</button>
+                </div>
+                
+                <div class="flex items-center gap-4 text-sm font-medium text-gray-700">
+                    <label class="flex items-center cursor-pointer gap-2" title="開啟後，答案將以三色顯示：藍(主題句)、黑(資料)、綠(推論)">
+                        <div class="relative">
+                            <input type="checkbox" id="penToggle" class="sr-only peer" checked onchange="togglePenMode()">
+                            <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-blue-600 peer-checked:to-green-600"></div>
+                        </div>
+                        三色筆
+                    </label>
+                    
+                    <label class="flex items-center cursor-pointer gap-2" title="開啟後，左側資料將根據答案動態高亮">
+                        <div class="relative">
+                            <input type="checkbox" id="hlToggle" class="sr-only peer" checked onchange="toggleSourceHl()">
+                            <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-yellow-400"></div>
+                        </div>
+                        資料高亮
+                    </label>
+                </div>
+            </div>
+
+            <!-- 題目與答案工作區 -->
+            <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex-1 min-h-[500px]">
+                
+                <!-- MC題 -->
+                <div id="tab-qmc" class="tab-content active space-y-6">
+                    <div class="flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md font-bold">選擇題</span>
+                        <h2 class="text-lg font-bold text-gray-800 flex-1">放生活動的負面影響</h2>
+                        <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-sm font-medium">1 分</span>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-gray-800 leading-relaxed">
+                        根據資料A，以下哪些是放生活動可能造成的負面影響？[cite: 2]<br>
+                        (1) 引致動物失去生存技能<br>
+                        (2) 引致動物受苦或死亡<br>
+                        (3) 傳播疾病，危害動物健康<br>
+                        (4) 威脅本地物種的生存環境
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="mc-options">
+                        <div class="border-2 border-gray-200 rounded-xl p-3 hover:bg-gray-50 flex items-center gap-2 cursor-pointer transition-colors">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold">A</span> 只有(1)和(2)
+                        </div>
+                        <div class="border-2 border-gray-200 rounded-xl p-3 hover:bg-gray-50 flex items-center gap-2 cursor-pointer transition-colors">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold">B</span> 只有(3)和(4)
+                        </div>
+                        <div class="border-2 border-gray-200 rounded-xl p-3 hover:bg-gray-50 flex items-center gap-2 cursor-pointer transition-colors">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold">C</span> 只有(1)、(2)和(3)
+                        </div>
+                        <div class="border-2 border-gray-200 rounded-xl p-3 hover:bg-gray-50 flex items-center gap-2 cursor-pointer transition-colors ans-mc-correct hidden">
+                            <span class="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-check"></i></span> D. 只有(2)、(3)和(4)
+                        </div>
+                        <!-- Default view for D -->
+                        <div class="border-2 border-gray-200 rounded-xl p-3 hover:bg-gray-50 flex items-center gap-2 cursor-pointer transition-colors ans-mc-default">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold">D</span> 只有(2)、(3)和(4)
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-4" id="btn-reveal-qmc">
+                        <button onclick="revealAns('qmc')" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-6 rounded-lg shadow-sm transition-colors flex items-center gap-2 mx-auto">
+                            <i class="fa-solid fa-lightbulb"></i> 我已思考完畢，查看正確答案與解析
+                        </button>
+                    </div>
+
+                    <div id="ans-qmc" class="ans-content space-y-4">
+                        <div class="border border-green-300 bg-green-50/50 rounded-xl p-4 mt-4">
+                            <h3 class="text-green-800 font-bold mb-2 flex items-center gap-2"><i class="fa-solid fa-circle-check"></i> 正確答案：D</h3>
+                            <ul class="text-sm space-y-2 text-gray-700">
+                                <li><i class="fa-solid fa-xmark text-red-500 w-5"></i> <strong>(1) 失去生存技能：</strong> 雖然是事實，但資料A主要強調「保障動物福利」，未明確指出失去生存技能。</li>
+                                <li><i class="fa-solid fa-check text-green-600 w-5"></i> <strong>(2) 引致動物受苦或死亡：</strong> 資料A呼籲「保障動物福利」，暗指不當放生會令動物受苦。</li>
+                                <li><i class="fa-solid fa-check text-green-600 w-5"></i> <strong>(3) 傳播疾病 / (4) 威脅本地物種：</strong> 這是普遍常識及放生帶來的主要生態危機。</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 核心概念 -->
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 flex gap-3">
+                            <div class="text-amber-500 text-xl"><i class="fa-solid fa-magnifying-glass"></i></div>
+                            <div>
+                                <h4 class="font-bold text-amber-800 text-sm mb-1">核心概念：可持續發展與環境保育</h4>
+                                <p class="text-xs text-amber-900 leading-relaxed">考核對「動物福利」及「生態平衡」基本概念的理解。推動環境保育需要考慮本地物種的生存環境不受外來物種或疾病威脅[cite: 3]。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 題 (i) -->
+                <div id="tab-q1i" class="tab-content space-y-6">
+                    <div class="flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md font-bold">資料歸納題</span>
+                        <h2 class="text-lg font-bold text-gray-800 flex-1">規管放生活動的關注點</h2>
+                        <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-sm font-medium">1 分</span>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-gray-800 font-medium">
+                        (i) 根據資料B，指出社會人士對規管放生活動的一個關注點。[cite: 2]
+                    </div>
+
+                    <div class="text-center pt-4" id="btn-reveal-q1i">
+                        <button onclick="revealAns('q1i')" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-6 rounded-lg shadow-sm transition-colors flex items-center gap-2 mx-auto">
+                            <i class="fa-solid fa-lightbulb"></i> 我已思考完畢，查看正確答案與解析
+                        </button>
+                    </div>
+
+                    <div id="ans-q1i" class="ans-content space-y-4">
+                        <!-- 圖例 -->
+                        <div class="flex gap-4 text-xs bg-gray-100 p-2 rounded justify-center">
+                            <span class="text-blue-600 font-bold">■ 主題句</span>
+                            <span class="text-gray-900 font-medium underline">■ 引用資料</span>
+                            <span class="text-green-600">■ 推論解釋</span>
+                        </div>
+                        
+                        <div class="border border-dashed border-gray-300 bg-slate-50/50 rounded-xl p-5 text-sm leading-relaxed">
+                            <p>
+                                <span class="ans-topic">社會人士主要關注現行或擬議的法例未能全面防止不當放生及其帶來的生態風險。</span>
+                                <span class="ans-explain">具體而言，</span>
+                                <span class="ans-source pair-amber">放生動物前，依舊無須就物種及地點是否適合放生進行強制性評估，因此未能釋除對進口放生動物是否入侵物種，以及它們會否對本地生態系統構成潛在影響的疑慮。</span>
+                            </p>
+                        </div>
+                        
+                        <!-- 評分標準 -->
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 flex gap-3">
+                            <div class="text-amber-500 text-xl"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <div>
+                                <h4 class="font-bold text-amber-800 text-sm mb-1">評分標準 (1分)</h4>
+                                <ul class="text-xs text-amber-900 leading-relaxed list-disc list-inside">
+                                    <li>準確從資料B中擷取社會人士的疑慮/關注點（如：缺乏強制性評估、入侵物種風險、本地生態影響）。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 題 (ii) -->
+                <div id="tab-q1ii" class="tab-content space-y-6">
+                    <div class="flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md font-bold">資料互證題</span>
+                        <h2 class="text-lg font-bold text-gray-800 flex-1">回應社會對放生的關注</h2>
+                        <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-sm font-medium">3 分</span>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-gray-800 font-medium">
+                        (ii) 說明資料A及C的內容可如何回應題(i)提到的關注點。[cite: 2]
+                    </div>
+
+                    <div class="text-center pt-4" id="btn-reveal-q1ii">
+                        <button onclick="revealAns('q1ii')" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-6 rounded-lg shadow-sm transition-colors flex items-center gap-2 mx-auto">
+                            <i class="fa-solid fa-lightbulb"></i> 我已思考完畢，查看正確答案與解析
+                        </button>
+                    </div>
+
+                    <div id="ans-q1ii" class="ans-content space-y-4">
+                        <!-- 圖例 -->
+                        <div class="flex gap-4 text-xs bg-gray-100 p-2 rounded justify-center">
+                            <span class="text-blue-600 font-bold">■ 主題句</span>
+                            <span class="text-gray-900 font-medium underline">■ 引用資料</span>
+                            <span class="text-green-600">■ 推論解釋</span>
+                        </div>
+                        
+                        <div class="border border-dashed border-gray-300 bg-slate-50/50 rounded-xl p-5 text-sm leading-relaxed space-y-4">
+                            <p>
+                                <span class="ans-topic">首先，資料A提倡以替代方案轉移市民的放生需求，從源頭減少不當放生帶來的生態風險。</span>
+                                <span class="ans-source pair-teal">漁護署呼籲市民考慮以其他善行代替放生活動，例如植樹或參與義工服務。</span>
+                                <span class="ans-explain">這能引導出於慈悲心的市民以不影響生態的方式行善，直接減少未經評估的動物被放入野外，從而回應了社會對外來物種入侵的疑慮。</span>
+                            </p>
+                            <p>
+                                <span class="ans-topic">其次，資料C透過科學規劃與教育，確保放生活動對生態有益無害。</span>
+                                <span class="ans-source pair-teal">政府推廣科學的「增殖放流行動」，在香港東北水域等合適地點，投放具商業價值且適合該地生境的本地物種（如紅斑及石蚌）。</span>
+                                <span class="ans-explain">這種由政府主導、經過科學評估物種及地點的放流方式，正正彌補了題(i)指出「缺乏強制性評估」的漏洞，確保放生能增加漁業資源及改善環境，而非破壞本地生態。</span>
+                            </p>
+                        </div>
+                        
+                        <!-- 核心概念 -->
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 flex gap-3">
+                            <div class="text-amber-500 text-xl"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <div>
+                                <h4 class="font-bold text-amber-800 text-sm mb-1">評分標準 (3分)</h4>
+                                <ul class="text-xs text-amber-900 leading-relaxed list-disc list-inside">
+                                    <li>清晰指出資料A的方法（替代善行）。(1分)</li>
+                                    <li>清晰指出資料C的方法（科學增殖放流 / 本地物種 / 選擇合適地點）。(1分)</li>
+                                    <li>能準確建立資料A與C的方法如何消除「缺乏評估/外來物種入侵生態」的疑慮之間的邏輯關係。(1分)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 題 (iii) -->
+                <div id="tab-q1iii" class="tab-content space-y-6">
+                    <div class="flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-md font-bold">論述題</span>
+                        <h2 class="text-lg font-bold text-gray-800 flex-1">政府在減少不當放生行為中的角色</h2>
+                        <span class="bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full text-sm font-medium">6 分</span>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-gray-800 font-medium leading-relaxed">
+                        (iii) 就減少不當放生行為，政府的角色有多重要？參考資料及就你所知，解釋你的答案。[cite: 2]
+                    </div>
+
+                    <div class="text-center pt-4" id="btn-reveal-q1iii">
+                        <button onclick="revealAns('q1iii')" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-6 rounded-lg shadow-sm transition-colors flex items-center gap-2 mx-auto">
+                            <i class="fa-solid fa-lightbulb"></i> 我已思考完畢，查看正確答案與解析
+                        </button>
+                    </div>
+
+                    <div id="ans-q1iii" class="ans-content space-y-4">
+                        <!-- 圖例 -->
+                        <div class="flex gap-4 text-xs bg-gray-100 p-2 rounded justify-center">
+                            <span class="text-blue-600 font-bold">■ 主題句</span>
+                            <span class="text-gray-900 font-medium underline">■ 引用資料 / 個人所知</span>
+                            <span class="text-green-600">■ 推論解釋</span>
+                        </div>
+                        
+                        <div class="border border-dashed border-gray-300 bg-slate-50/50 rounded-xl p-5 text-sm leading-relaxed space-y-5">
+                            <p>
+                                <span class="ans-topic">政府在減少不當放生行為上扮演極為重要的角色，尤其在立法與執法方面具備不可替代的權威性。</span>
+                                <span class="ans-source pair-rose">根據資料B，政府建議修例，明確把「不當將動物放到不合宜環境」列為殘酷對待動物，並提高罰則。</span>
+                                <span class="ans-explain">就我所知，一般市民或環保團體只能作出道德呼籲，唯有政府擁有公權力去制訂具法律約束力的條例並進行檢控。提高罰則能增加阻嚇力，從法律層面為不當放生劃下底線，有效遏止危害生態及動物福利的行為。</span>
+                            </p>
+                            <p>
+                                <span class="ans-topic">其次，政府在統籌與提供科學引導方面擔任關鍵的倡導者角色。</span>
+                                <span class="ans-source pair-purple">根據資料C，政府主動計劃試驗並推廣科學的增殖放流行動，邀請宗教和漁民團體探討讓公眾參與，並選定合適地點放流本地物種。</span>
+                                <span class="ans-explain">這顯示政府不僅是監管者，更是資源整合者。政府具備科學數據與專業知識（如漁護署的生態研究），能引導原本基於宗教或慈悲原因的放生行為轉化為具備生態價值的保育行動，這是單靠民間力量難以大規模實現的。</span>
+                            </p>
+                            <p>
+                                <span class="ans-topic">最後，在公眾教育及推廣替代方案上，政府能發揮龐大的宣傳影響力。</span>
+                                <span class="ans-source">就我所知，政府部門可以動用龐大公共資源，透過電視宣傳片、社交媒體及學校教育，廣泛傳遞正確保育觀念。同時如資料A所述，政府能呼籲以植樹或義工服務代替放生。</span>
+                                <span class="ans-explain">這種軟性教育能改變市民的文化觀念，治標治本，從根本上提升市民的環境保育意識（可持續發展的概念），彰顯政府在塑造社會正面價值觀上的重要領導地位。</span>
+                            </p>
+                        </div>
+                        
+                        <!-- 預測與延伸 -->
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 flex gap-3 mt-4">
+                            <div class="text-blue-500 text-xl"><i class="fa-solid fa-rocket"></i></div>
+                            <div>
+                                <h4 class="font-bold text-blue-800 text-sm mb-1">延伸預測與 DSE 溫習提示</h4>
+                                <p class="text-xs text-blue-900 leading-relaxed">
+                                    此類題型常考核不同持份者（政府、NGO、企業、市民）在推動可持續發展中的角色[cite: 3]。<br>
+                                    <strong>溫習方向：</strong> 留意政府角色的三個層次：1. 立法/規管 (硬性)、2. 經濟誘因/資源投入、3. 教育/宣傳 (軟性)。未來考題可能要求你比較「政府立法」與「公眾教育」何者更有效。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-900 text-gray-400 py-4 border-t border-gray-800 text-center text-xs mt-auto">
+        <p>三色筆題解可視化 Web App &copy; 2026 中華基督教會燕京書院 公民與社會發展科</p>
+        <p class="mt-1 opacity-60">Generated System Output • 僅供教學用途</p>
+    </footer>
+
+    <!-- 互動邏輯 -->
+    <script>
+        // 當前狀態
+        let currentTab = 'qmc';
+        let isPenMode = true;
+        let isHlMode = true;
+        
+        // 記錄各題是否已揭曉答案
+        const revealedStatus = {
+            'qmc': false,
+            'q1i': false,
+            'q1ii': false,
+            'q1iii': false
+        };
+
+        // 切換題目
+        function switchTab(tabId) {
+            currentTab = tabId;
+            
+            // 更新按鈕樣式
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('bg-white', 'text-gray-700');
+            activeBtn.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+            
+            // 切換內容
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('tab-' + tabId).classList.add('active');
+            
+            // 更新高亮狀態
+            updateSourceHighlightState();
+        }
+
+        // 揭曉答案
+        function revealAns(tabId) {
+            revealedStatus[tabId] = true;
+            
+            // 隱藏按鈕，顯示答案
+            document.getElementById('btn-reveal-' + tabId).style.display = 'none';
+            document.getElementById('ans-' + tabId).classList.add('active');
+            
+            // 針對MC題的特殊UI處理
+            if(tabId === 'qmc') {
+                document.querySelector('.ans-mc-default').classList.add('hidden');
+                document.querySelector('.ans-mc-correct').classList.remove('hidden');
+            }
+            
+            // 更新高亮狀態
+            updateSourceHighlightState();
+        }
+
+        // 切換三色筆模式
+        function togglePenMode() {
+            isPenMode = document.getElementById('penToggle').checked;
+            if (isPenMode) {
+                document.body.classList.add('pen-mode-active');
+            } else {
+                document.body.classList.remove('pen-mode-active');
+            }
+        }
+
+        // 切換資料高亮總開關
+        function toggleSourceHl() {
+            isHlMode = document.getElementById('hlToggle').checked;
+            if (isHlMode) {
+                document.body.classList.add('source-hl-active');
+            } else {
+                document.body.classList.remove('source-hl-active');
+            }
+        }
+
+        // 核心動態高亮邏輯
+        function updateSourceHighlightState() {
+            // 1. 先清除 body 上所有舊的 hl-active-[題號] class
+            document.body.classList.remove('hl-active-qmc', 'hl-active-q1i', 'hl-active-q1ii', 'hl-active-q1iii');
+            
+            // 2. 清除左側資料卡片的發光效果
+            document.getElementById('source-card-A').classList.remove('source-card-highlight');
+            document.getElementById('source-card-B').classList.remove('source-card-highlight');
+            document.getElementById('source-card-C').classList.remove('source-card-highlight');
+            
+            // 3. 如果當前題目的答案已揭曉，加上對應的高亮 class 和 卡片發光
+            if (revealedStatus[currentTab]) {
+                document.body.classList.add('hl-active-' + currentTab);
+                
+                // 根據題號點亮對應的卡片邊框
+                if (currentTab === 'q1i') {
+                    document.getElementById('source-card-B').classList.add('source-card-highlight');
+                } else if (currentTab === 'q1ii') {
+                    document.getElementById('source-card-A').classList.add('source-card-highlight');
+                    document.getElementById('source-card-C').classList.add('source-card-highlight');
+                } else if (currentTab === 'q1iii') {
+                    document.getElementById('source-card-B').classList.add('source-card-highlight');
+                    document.getElementById('source-card-C').classList.add('source-card-highlight');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
